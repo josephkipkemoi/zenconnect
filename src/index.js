@@ -4,6 +4,7 @@ import './index.css';
 import App from './pages/App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Therapists from './pages/Therapists';
+import Features from './pages/Features';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/therapists",
     element: <Therapists/>,
+  },
+  {
+    path: "/features",
+    element: <Features/>,
   }
 ])
 
