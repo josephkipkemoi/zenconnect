@@ -8,6 +8,7 @@ import Features from './pages/Features';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
 import ContactUs from './pages/ContactUs';
+import Resources from './pages/Resources';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
   {
     path: "/contact-us",
     element: <ContactUs/>,
+  },
+  {
+    path: "/resources",
+    element: <Resources/>,
   }
 ])
 

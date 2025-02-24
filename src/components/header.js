@@ -33,10 +33,10 @@ const HeaderComponent = () => {
                                 <FontAwesomeIcon className="m-1" icon={faKitMedical} />
                                 Therapists
                              </Link>                         
-                            <Nav.Link href="#link" className="d-flex align-items-center">
+                            <Link to="/resources" className="d-flex align-items-center nav-link">
                                 <FontAwesomeIcon className="m-1" icon={faBook} />
                                 Resources
-                            </Nav.Link>
+                            </Link>
                             <Nav.Link href="#link" className="d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faPeopleGroup} />
                                 Community
