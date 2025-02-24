@@ -9,7 +9,7 @@ const Features = () => {
     return (
         <Container>
             <HeaderComponent/>
-            <div className="d-flex justify-content-center">
+            <div className="d-sm-flex justify-content-center">
                 <Card className="bg-success text-white m-1">
                     <Card.Body className="d-flex flex-column justify-content-between">
                         <Card.Title>
