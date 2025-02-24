@@ -3,6 +3,7 @@ import { faBook, faHome, faKitMedical, faPeopleGroup, faPhone, faPhoneSquare, fa
 import { faMobilePhone } from "@fortawesome/free-solid-svg-icons/faMobilePhone"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Container, Nav, Navbar } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 const HeaderComponent = () => {
     return (
@@ -16,10 +17,10 @@ const HeaderComponent = () => {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="#home" className="d-flex align-items-center">
+                            <Link to="/" className="nav-link d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faHome} />
                                 Home
-                            </Nav.Link>
+                            </Link>                           
                             <Nav.Link href="#link" className="d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faMap} />
                                 About Us
@@ -28,10 +29,11 @@ const HeaderComponent = () => {
                                 <FontAwesomeIcon className="m-1" icon={faSignHanging} />
                                 Features
                             </Nav.Link>
-                            <Nav.Link href="#link" className="d-flex align-items-center">
+                            <Link to="/therapists" className="nav-link d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faKitMedical} />
                                 Therapists
-                            </Nav.Link>
+                             </Link>
+                         
                             <Nav.Link href="#link" className="d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faBook} />
                                 Resources

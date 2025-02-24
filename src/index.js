@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import App from './pages/App';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Therapists from './pages/Therapists';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <App/>,
+  },
+  {
+    path: "/therapists",
+    element: <Therapists/>,
   }
 ])
 
