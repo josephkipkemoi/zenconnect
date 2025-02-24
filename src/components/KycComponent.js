@@ -1,12 +1,26 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 
-const KycComponent = () => {
-    let [active, setActive] = useState(true)
+const KycComponent = ({ checkTime }) => {
+    let [active, setActive] = useState(checkTime)
 
     const submitForm = () => {
+        sessionStorage.setItem("visited_user", true)
         setActive(false)
     }
+
+    useEffect(() => {
+        const visitedUser = () => {
+            const visited = sessionStorage.getItem("visited_user")
+            return !!visited
+        }
+
+        if(checkTime == true && visitedUser() === false) {
+            setActive(true)
+            return
+        }
+    }, [checkTime])
+
     return (
         <Modal show={active}>
             <Modal.Header className="d-flex justify-content-center">
