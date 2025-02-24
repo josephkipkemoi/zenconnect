@@ -25,15 +25,14 @@ const HeaderComponent = () => {
                                 <FontAwesomeIcon className="m-1" icon={faMap} />
                                 About Us
                             </Nav.Link>
-                            <Nav.Link href="#link" className="d-flex align-items-center">
+                            <Link to="/features" className="d-flex align-items-center nav-link">
                                 <FontAwesomeIcon className="m-1" icon={faSignHanging} />
                                 Features
-                            </Nav.Link>
+                            </Link>
                             <Link to="/therapists" className="nav-link d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faKitMedical} />
                                 Therapists
-                             </Link>
-                         
+                             </Link>                         
                             <Nav.Link href="#link" className="d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faBook} />
                                 Resources
