@@ -27,7 +27,9 @@ const LandingSupportComponent = () => {
         <div className="d-sm-flex justify-content-center m-2">
             <Card className="m-1 border-1">
                 <Card.Body className="shadow-sm bg-secondary text-white">
-                    <Card.Title className="text-center">Therapy Sessions</Card.Title>
+                    <Card.Title className="text-center">
+                         Therapy Sessions
+                    </Card.Title>
                     <Card.Body>Some message on Therapy sessions</Card.Body>
                 </Card.Body>
             </Card>
