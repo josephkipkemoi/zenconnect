@@ -8,7 +8,7 @@ import { Button, Card, FloatingLabel, Form } from "react-bootstrap"
 
 const LandingMessageComponent = () => {
     return(
-        <Card className="m-4 border-0 text-center card-box shadow">
+        <Card className="m-4 border-0 rounded-4 text-center card-box shadow">
             <Card.Body className="bg-light rounded">
             <Card.Title>Mental Health</Card.Title>
                 Your mental health is our main concern
