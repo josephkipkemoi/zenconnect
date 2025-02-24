@@ -41,10 +41,10 @@ const HeaderComponent = () => {
                                 <FontAwesomeIcon className="m-1" icon={faPeopleGroup} />
                                 Community
                             </Nav.Link>
-                            <Nav.Link href="#link" className="d-flex align-items-center">
+                            <Link to="/contact-us" className="d-flex align-items-center nav-link">
                                 <FontAwesomeIcon className="m-1" icon={faSquarePhone} />
                                 Contact Us
-                            </Nav.Link>
+                            </Link>
                         </Nav>
                         </Navbar.Collapse>
                     </Container>

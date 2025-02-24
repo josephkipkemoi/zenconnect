@@ -7,6 +7,7 @@ import Therapists from './pages/Therapists';
 import Features from './pages/Features';
 import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
+import ContactUs from './pages/ContactUs';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>,
+  },
+  {
+    path: "/contact-us",
+    element: <ContactUs/>,
   }
 ])
 
