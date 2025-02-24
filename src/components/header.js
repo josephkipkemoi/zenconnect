@@ -21,10 +21,10 @@ const HeaderComponent = () => {
                                 <FontAwesomeIcon className="m-1" icon={faHome} />
                                 Home
                             </Link>                           
-                            <Nav.Link href="#link" className="d-flex align-items-center">
+                            <Link to="/about-us" className="nav-link d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faMap} />
                                 About Us
-                            </Nav.Link>
+                            </Link>
                             <Link to="/features" className="d-flex align-items-center nav-link">
                                 <FontAwesomeIcon className="m-1" icon={faSignHanging} />
                                 Features
