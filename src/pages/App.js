@@ -25,7 +25,7 @@ function App() {
     <div>
         <HeaderComponent/>
         <KycComponent checkTime={checkTime}/>
-        <div className="bg-warning p-3 d-flex flex-column align-items-center container rounded-5">
+        <div className="bg-light p-3 d-flex flex-column align-items-center container rounded-5">
           <ChatBoxComponent/>
           <LandingMessageComponent/>
         </div>

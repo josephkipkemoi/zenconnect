@@ -8,21 +8,22 @@ import { Button, Card, FloatingLabel, Form } from "react-bootstrap"
 
 const LandingMessageComponent = () => {
     return(
-        <Card className="m-4 border-0 rounded-4 text-center card-box shadow">
-            <Card.Body className="bg-light rounded">
+        <Card className="m-4 border-0 rounded-4 text-center card-box shadow bg-primary">
+            <Card.Body className="bg-primary rounded text-white">
             <Card.Title>Mental Health</Card.Title>
                 Your mental health is our main concern
                 <hr/>
-                <FloatingLabel controlId="floatingTextarea2" label="How are you feeling today?">
+                <FloatingLabel className="text-secondary" controlId="floatingTextarea2" label="How are you feeling today?">
                     <Form.Control
                     as="textarea"
                     placeholder="Leave a comment here"
                     style={{ height: '100px' }}
+                    className="bg-light text-dark"
                     />
                 </FloatingLabel>
-                <Button variant="primary" size="md" className="m-2 shadow-sm">
+                <Button variant="warning" size="md" className="m-2 shadow-sm fw-bold">
                     <FontAwesomeIcon icon={faBrain} className="text-light"/>
-                    <span className="m-1">Get Help</span> 
+                    <span className="m-1 text-light">Get Help</span> 
                 </Button>
             </Card.Body>
         </Card>
