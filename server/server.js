@@ -4,7 +4,7 @@ const app = express()
 const port = process.env.PORT || 5000
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI("AIzaSyACB2m7AmnfW0PpkqXqPfBn0pjj3pQ0nwU");
+const genAI = new GoogleGenerativeAI("AIzaSyACB2m7AmnfW0PpkqXqPfBn0pjj3pQ0nwUa");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 
