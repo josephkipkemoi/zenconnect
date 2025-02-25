@@ -51,7 +51,8 @@ const HeaderComponent = () => {
                 </Navbar>
             </nav>
             <Container className="d-flex justify-content-end mb-3">
-                <Link className="text-right nav-link btn" to="/login">Login</Link>
+                <Link className="text-right nav-link btn m-1" to="/login">Login</Link>
+                <Link className="text-right nav-link btn m-1" to="/register">Register</Link>
             </Container>
         </header>
     )

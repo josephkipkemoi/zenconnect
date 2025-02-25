@@ -10,6 +10,7 @@ import Login from './pages/Login';
 import ContactUs from './pages/ContactUs';
 import Resources from './pages/Resources';
 import Community from './pages/Community';
+import Register from './pages/Register';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
   {
     path: "/community",
     element: <Community/>,
+  },
+  {
+    path: "/register",
+    element: <Register/>,
   }
 ])
 
