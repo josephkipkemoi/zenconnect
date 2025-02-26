@@ -1,5 +1,8 @@
 import React from "react";
 import { Container, Card } from "react-bootstrap";
+import "./registerForm.css";
+
+
 
 const RegisterComponent = () => {
     return (
