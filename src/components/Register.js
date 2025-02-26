@@ -1,6 +1,6 @@
 import FooterComponent from "./footer"
 import HeaderComponent from "./header"
-import RegisterComponent from "./registerForm"
+import RegisterComponent from "../pages/registerForm"
 
 
 const Register = () => {
