@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Card } from "react-bootstrap";
-import "./registerForm.css";
+import "./registration.css";
 
 
 
@@ -64,7 +64,7 @@ const RegisterComponent = () => {
                             </div>
 
                             <div className="button">
-                                <input type="submit" value="Register" />
+                                <input type="submit" value="Register!" />
                             </div>
                         </form>
                     </div>
