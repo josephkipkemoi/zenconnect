@@ -1,4 +1,4 @@
-import { Button, Card, Container } from "react-bootstrap"
+import { Button, Card, Container, Row, Col } from "react-bootstrap"
 import FooterComponent from "../components/footer"
 import HeaderComponent from "../components/header"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
