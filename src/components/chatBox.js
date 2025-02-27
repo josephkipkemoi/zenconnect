@@ -25,9 +25,7 @@ const ChatBox = () => {
                         <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
                     </div>
                     <div className="bg-light p-2 rounded-4 m-1 shadow">
-                        <p className="p-3">Hello, Welcome to ZenConnect, your privacy matters, that is why we do not collect any data from you apart from your
-                        age-group and language preference, unless you want specialized assistance, we do not
-                        need your personal data in order for you to use this service.</p>
+                        <p className="p-3">Hello, Welcome, ZenConnect is a digital platform dedicated to fostering mental wellness through accessible resources, professional support, and a compassionate community. Our goal is to break the stigma around mental health and provide a safe space where individuals can seek help, learn, and grow.</p>
                     </div>
                 </div>
                 <div className="w-100">

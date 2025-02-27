@@ -17,12 +17,12 @@ app.use("/api/users", require("./routes/api/user"))
 app.use("/api/chatbot", require("./routes/api/chatbot"))
 
 // Serve static assets in production
-app.use(express.static("public/build"))
+app.use(express.static("./build"))
 
 if(process.env.NODE_ENV === "production") {
     // Set static folder
     app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, "public", "build", "index.html"))
+        res.sendFile(path.resolve(__dirname, "build", "index.html"))
     })
 }
 
