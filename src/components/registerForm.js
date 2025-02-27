@@ -1,76 +1,83 @@
 import React from "react";
-import { Container, Card } from "react-bootstrap";
-import "./registration.css";
-
-
+import { Container, Card, Form, Button } from "react-bootstrap";
 
 const RegisterComponent = () => {
     return (
-        <Container>
-            <Card>
-                <Card.Body>
-                    <Card.Title>Register</Card.Title>
-                    <div className="container">
-                        <div className="title">Registration Form</div>
-                        <form action="#">
-                            <div className="user-details">
-                                <div className="input-box">
-                                    <span className="details">Full Name</span>
-                                    <input type="text" placeholder="Enter your full name" required />
-                                </div>
-                                <div className="input-box">
-                                    <span className="details">User Name</span>
-                                    <input type="text" placeholder="Enter your user name" required />
-                                </div>
-                                <div className="input-box">
-                                    <span className="details">Phone Number</span>
-                                    <input type="number" placeholder="Enter your phone number" required />
-                                </div>
-                                <div className="input-box">
-                                    <span className="details">Email</span>
-                                    <input type="email" placeholder="Enter your email" required />
-                                </div>
-                                <div className="input-box">
-                                    <span className="details">Password</span>
-                                    <input type="password" placeholder="Enter your password" required />
-                                </div>
-                                <div className="input-box">
-                                    <span className="details">Confirm Password</span>
-                                    <input type="password" placeholder="Enter your password again" required />
-                                </div>
-                            </div>
+        <section className="vh-100 bg-light d-flex align-items-center">
+            <Container>
+                <div className="row justify-content-center">
+                    <div className="col-12 col-lg-9 col-xl-7">
+                        <Card className="shadow-lg border-0 rounded-3">
+                            <Card.Body className="p-4 p-md-5">
+                                <h3 className="mb-4">Registration Form</h3>
+                                <Form>
 
-                            <div className="gender-details">
-                                <span className="gender-title">Gender</span>
-                                <div className="category">
-                                    <label htmlFor="dot-1">
-                                        <input type="radio" name="gender" id="dot-1" />
-                                        <span className="dot one"></span>
-                                        <span className="gender">Female</span>
-                                    </label>
+                                    <div className="row">
+                                        <div className="col-md-6 mb-4">
+                                            <Form.Group className="form-floating">
+                                                <Form.Control type="text" id="firstName" placeholder="First Name" />
+                                                <Form.Label htmlFor="firstName">First Name</Form.Label>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6 mb-4">
+                                            <Form.Group className="form-floating">
+                                                <Form.Control type="text" id="lastName" placeholder="Last Name" />
+                                                <Form.Label htmlFor="lastName">Last Name</Form.Label>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
 
-                                    <label htmlFor="dot-2">
-                                        <input type="radio" name="gender" id="dot-2" />
-                                        <span className="dot two"></span>
-                                        <span className="gender">Male</span>
-                                    </label>
+                                    <div className="row">
+                                        <div className="col-md-6 mb-4">
+                                            <Form.Group className="form-floating">
+                                                <Form.Control type="date" id="birthdayDate" placeholder="Birthday" />
+                                                <Form.Label htmlFor="birthdayDate">Birthday</Form.Label>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6 mb-4">
+                                            <h6 className="mb-2">Gender:</h6>
+                                            <Form.Check inline type="radio" name="gender" id="femaleGender" label="Female" />
+                                            <Form.Check inline type="radio" name="gender" id="maleGender" label="Male" />
+                                            <Form.Check inline type="radio" name="gender" id="otherGender" label="Other" />
+                                        </div>
+                                    </div>
 
-                                    <label htmlFor="dot-3">
-                                        <input type="radio" name="gender" id="dot-3" />
-                                        <span className="dot three"></span>
-                                        <span className="gender">Other</span>
-                                    </label>
-                                </div>
-                            </div>
+                                    <div className="row">
+                                        <div className="col-md-6 mb-4">
+                                            <Form.Group className="form-floating">
+                                                <Form.Control type="email" id="emailAddress" placeholder="Email" />
+                                                <Form.Label htmlFor="emailAddress">Email</Form.Label>
+                                            </Form.Group>
+                                        </div>
+                                        <div className="col-md-6 mb-4">
+                                            <Form.Group className="form-floating">
+                                                <Form.Control type="tel" id="phoneNumber" placeholder="Phone Number" />
+                                                <Form.Label htmlFor="phoneNumber">Phone Number</Form.Label>
+                                            </Form.Group>
+                                        </div>
+                                    </div>
 
-                            <div className="button">
-                                <input type="submit" value="Register!" />
-                            </div>
-                        </form>
+                                    <Form.Group className="mb-4">
+                                        <Form.Label htmlFor="subjectSelect">Choose option</Form.Label>
+                                        <Form.Select id="subjectSelect">
+                                            <option value="" disabled selected>Choose option</option>
+                                            <option value="1">Subject 1</option>
+                                            <option value="2">Subject 2</option>
+                                            <option value="3">Subject 3</option>
+                                        </Form.Select>
+                                    </Form.Group>
+
+                                    <div className="mt-4 pt-2 text-center">
+                                        <Button type="submit" variant="primary" size="lg">Submit</Button>
+                                    </div>
+
+                                </Form>
+                            </Card.Body>
+                        </Card>
                     </div>
-                </Card.Body>
-            </Card>
-        </Container>
+                </div>
+            </Container>
+        </section>
     );
 };
 

@@ -11,6 +11,9 @@ import ContactUs from './pages/ContactUs';
 import Resources from './pages/Resources';
 import Community from './pages/Community';
 import Register from './pages/Register';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
