@@ -59,6 +59,7 @@ const ContactUsComponent = () => {
               </form>
             </div>
           </div>
+          
         </Card.Header>
         <Card.Body></Card.Body>
       </Card>
