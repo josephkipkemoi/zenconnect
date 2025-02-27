@@ -129,15 +129,15 @@ const ModalContainer = ({ openModal, setOpenModal }) => {
                 <Modal.Header>Please fill form to book an appointment</Modal.Header>
                 <Modal.Body>
                     <div className="mb-3"> 
-                        <label htmlFor="full_name" className="mb-3">Full name:</label>
+                        <label htmlFor="full_name" className="mb-3">Full name: </label>
                         <input id="full_name" className="form-control" placeholder="Please enter your full name" />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="phone_number" className="mb-3">Phone number:</label>
+                        <label htmlFor="phone_number" className="mb-3">Phone number: </label>
                         <input id="phone_number" className="form-control" placeholder="Please enter your phone number" />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="date" className="mb-3">Date available:</label>
+                        <label htmlFor="date" className="mb-3">Date available: </label>
                         <input id="date" className="form-control" type="date" />
                     </div>
                     <div className="d-flex justify-content-center">
