@@ -11,8 +11,8 @@ const HeaderComponent = () => {
             <nav className="d-sm-flex align-items-center justify-content-center m-3">
                 <Navbar expand="lg" className="bg-body-tertiary">
                     <Container>
-                        <Navbar.Brand href="#home">
-                        <h1 className="m-2">ZenConnect</h1>
+                        <Navbar.Brand href="/">
+                                <h1 className="m-2">ZenConnect</h1>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
