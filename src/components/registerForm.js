@@ -30,8 +30,8 @@ const RegisterComponent = () => {
                                     <div className="row">
                                         <div className="col-md-6 mb-4">
                                             <Form.Group className="form-floating">
-                                                <Form.Control type="date" id="birthdayDate" placeholder="Birthday" />
-                                                <Form.Label htmlFor="birthdayDate">Birthday</Form.Label>
+                                                <Form.Control type="date" id="username" placeholder="username" />
+                                                <Form.Label htmlFor="username">User Name</Form.Label>
                                             </Form.Group>
                                         </div>
                                         <div className="col-md-6 mb-4">
