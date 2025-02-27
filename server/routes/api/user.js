@@ -6,6 +6,7 @@ const jwt = require("jsonwebtoken")
 
 const User = require("../../models/User")
 
+// Register user route
 router.post("/register",[
     check('phone_number', 'Please include a valid number').exists(),
     check("full_name", "Please enter full name").exists(),
@@ -69,6 +70,57 @@ router.post("/register",[
             def: "Server error",
             message: error.message
         })
+    }
+})
+
+// Login user route
+router.post("/login", [
+    check("phone_number", "Please enter a valid phone number").exists(),
+    check("password", "Please enter password").exists()
+], async (req, res) => {
+    const erros = validationResult(req)
+
+    if(!erros.isEmpty()){
+        return res.status(400).json({erros: erros.array()})
+    }
+
+    const { phone_number, password } = req.body
+
+    try {
+        let user = await User.findOne({ phone_number })
+
+        if(!user) {
+            return res.status(400).json({errors: [{msg:'Invalid credentials'}]})
+        }
+
+        const isMatch = await bcrypt.compare(password,user.password)
+        
+        if(!isMatch){
+            return res.status(400).json({errors: [{msg:'Invalid credentials'}]})
+        }
+
+        const payload = {
+            user: {
+                id: user.id
+            }
+        }
+
+        jwt.sign(
+            payload, 
+            "zenconnect_key",
+            {expiresIn: 36000},
+            (err, token) => {
+                if(err) throw err;
+                res.json({token})
+            }
+        )
+
+    } catch (error) {
+        console.error(error.message)
+        res.status(500).json({ 
+            def: "Server error",
+            message: error.message
+         })
     }
 })
 
