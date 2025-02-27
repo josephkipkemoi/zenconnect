@@ -1,10 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Card } from "react-bootstrap";
 import "./registration.css";
 
 
 
 const RegisterComponent = () => {
+    let [errs, setErrs] = useState([])
+    let [formData, setFormData] = useState({
+        full_name: '',
+        user_name: '',
+        phone_number: '',
+        email: '',
+        password: '',
+        confirmPassword: ''
+    })
+
+    const {full_name, user_name, phone_number, email, password, confirmPassword } = formData
+
+    const handleChange = (e) => setFormData(() => ({[e.target.name]: e.target.value}))
+
+    const registerUser = () => {
+        console.log(formData)
+    }
+
     return (
         <Container>
             <Card>
@@ -12,31 +30,30 @@ const RegisterComponent = () => {
                     <Card.Title>Register</Card.Title>
                     <div className="container">
                         <div className="title">Registration Form</div>
-                        <form action="#">
                             <div className="user-details">
                                 <div className="input-box">
                                     <span className="details">Full Name</span>
-                                    <input type="text" placeholder="Enter your full name" required />
+                                    <input onChange={handleChange} name="full_name" type="text" placeholder="Enter your full name" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">User Name</span>
-                                    <input type="text" placeholder="Enter your user name" required />
+                                    <input onChange={handleChange} type="text" name="user_name" placeholder="Enter your user name" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Phone Number</span>
-                                    <input type="number" placeholder="Enter your phone number" required />
+                                    <input onChange={handleChange} type="number" name="phone_number" placeholder="Enter your phone number" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Email</span>
-                                    <input type="email" placeholder="Enter your email" required />
+                                    <input onChange={handleChange} type="email" name="email" placeholder="Enter your email" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Password</span>
-                                    <input type="password" placeholder="Enter your password" required />
+                                    <input onChange={handleChange} type="password" name="password" placeholder="Enter your password" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Confirm Password</span>
-                                    <input type="password" placeholder="Enter your password again" required />
+                                    <input onChange={handleChange} type="password" name="confirm_password" placeholder="Enter your password again" required />
                                 </div>
                             </div>
 
@@ -64,9 +81,8 @@ const RegisterComponent = () => {
                             </div>
 
                             <div className="button">
-                                <input type="submit" value="Register!" />
+                                <input type="submit" onClick={registerUser} value="Register!" />
                             </div>
-                        </form>
                     </div>
                 </Card.Body>
             </Card>
