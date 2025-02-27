@@ -21,9 +21,9 @@ const HeaderComponent = () => {
                                 <FontAwesomeIcon className="m-1" icon={faHome} />
                                 Home
                             </Link>                           
-                            <Link to="/about-us" className="nav-link d-flex align-items-center">
+                            <Link to="/about-us" className="nav-link w-100 d-flex align-items-center">
                                 <FontAwesomeIcon className="m-1" icon={faMap} />
-                                About Us
+                                <span>About</span>
                             </Link>
                             <Link to="/features" className="d-flex align-items-center nav-link">
                                 <FontAwesomeIcon className="m-1" icon={faSignHanging} />
@@ -41,9 +41,9 @@ const HeaderComponent = () => {
                                 <FontAwesomeIcon className="m-1" icon={faPeopleGroup} />
                                 Community
                             </Link>
-                            <Link to="/contact-us" className="d-flex align-items-center nav-link">
+                            <Link to="/contact-us" className="d-flex w-100 align-items-center nav-link">
                                 <FontAwesomeIcon className="m-1" icon={faSquarePhone} />
-                                Contact Us
+                                Contact
                             </Link>
                         </Nav>
                         </Navbar.Collapse>
