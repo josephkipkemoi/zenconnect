@@ -2,30 +2,29 @@ const express = require("express")
 const cors = require("cors")
 const app = express()
 const port = process.env.PORT || 5000
+const path = require("path")
 const ConnectDb = require("../server/db/connect")
-
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI("AIzaSyACB2m7AmnfW0PpkqXqPfBn0pjj3pQ0nwUa");
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 // Database connection
 ConnectDb()
 
 app.use(cors())
+app.use(express.json({ extended: false }))
 
-app.get("/api/chatbot", async(req, res) => {
-    const { message } = req.query
-    const result = await model.generateContent(message);
+// Routes definition
+app.use("/api/users", require("./routes/api/user"))
+// app.use("/api/auth", require("./routes/api/auth"))
+app.use("/api/chatbot", require("./routes/api/chatbot"))
 
-    res.json({
-        message: result.response.text()
+// Serve static assets in production
+app.use(express.static("public/build"))
+
+if(process.env.NODE_ENV === "production") {
+    // Set static folder
+    app.get("*", (req, res) => {
+        res.sendFile(path.resolve(__dirname, "public", "build", "index.html"))
     })
-})
-
-app.post("/api/register", async(req,res) => {
-    const { full_name, user_name, phone_number, email, password, confirm_password, gender } = req.query
-})
-
+}
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`)
