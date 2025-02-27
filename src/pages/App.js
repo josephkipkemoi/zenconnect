@@ -5,6 +5,7 @@ import HeaderComponent from '../components/header';
 import KycComponent from '../components/KycComponent';
 import {LandingMessageComponent, LandingSupportComponent} from '../components/landingMessage';
 import ChatBoxComponent from '../components/chatBoxComponent';
+import ChatBox from '../components/chatBox';
 
 function App() {
   let [checkTime, setCheckTime] = useState(false)
@@ -25,10 +26,8 @@ function App() {
     <div>
         <HeaderComponent/>
         <KycComponent checkTime={checkTime}/>
-        <div className="bg-light p-3 d-flex flex-column align-items-center container rounded-5">
-          <ChatBoxComponent/>
-          <LandingMessageComponent/>
-        </div>
+        <ChatBox/>
+        <hr className='mt-5 mb-5'/>
         <div className='m-4'>
           <LandingSupportComponent/>
         </div>

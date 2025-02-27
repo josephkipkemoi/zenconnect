@@ -1,0 +1,8 @@
+.chat-box-container {
+    height: 60vh;
+    overflow-y: hidden;
+}
+.chat-user {
+    display: block;
+    float: right;
+}
