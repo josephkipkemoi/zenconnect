@@ -1,7 +1,9 @@
 .chat-box-container {
-    height: 60vh;
-    overflow-y: hidden;
+    height: 80vh;
+    overflow-y: scroll;
+    background-color: whitesmoke;
 }
+
 .chat-user {
     display: block;
     float: right;

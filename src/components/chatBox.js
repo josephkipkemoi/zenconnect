@@ -18,8 +18,8 @@ const ChatBox = () => {
     }
 
     return (
-        <div className="container chat-box-container d-flex flex-column justify-content-between bg-info rounded-4">
-            <div className="d-flex flex-column justify-content-start align-items-start">
+        <div className="container chat-box-container d-flex flex-column justify-content-between bg-none rounded-4">
+            <div className="d-flex flex-column justify-content-start align-items-start chat-box-child">
                 <div className="d-flex p-3 align-items-start rounded-5">
                     <div>
                         <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
