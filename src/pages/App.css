@@ -7,3 +7,13 @@
     margin: 0 auto;
     padding: 12px;
 }
+.community-chat textarea {
+    min-height: 180px;
+}
+.community-chat {
+    line-height: 32px;
+}
+h1,h2,h3,h4,h5,h6 {
+    padding: 0;
+    margin: 0;
+}
