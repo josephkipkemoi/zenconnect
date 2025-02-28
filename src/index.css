@@ -6,14 +6,16 @@ body {
   font-family: "Poppins", serif;
   font-weight: 400;
   font-style: normal;
-  background-image: url("./logo.png");
+  background: linear-gradient(whitesmoke, cyan);
 }
 footer {
-  background-color: lightslategray;
+  background-color: none;
   position: relative;
   bottom: 0;
   margin: 18px;
   padding: 22px;
   text-align: center;
-  color: white;
+  color: black;
+  font-weight: 600;
+  letter-spacing: 2px;
 }
