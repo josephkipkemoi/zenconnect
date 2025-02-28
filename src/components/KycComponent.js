@@ -1,3 +1,5 @@
+import { faArrowAltCircleRight } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
 import { Button, Form, Modal } from "react-bootstrap"
 
@@ -19,8 +21,10 @@ const KycComponent = ({ checkTime }) => {
 
     return (
         <Modal show={active}>
-            <Modal.Header className="d-flex justify-content-center">
-                <h1 >Quick One!</h1>
+            <Modal.Header className="d-flex justify-content-center bg-success text-white">
+                <h3>
+                    Quick one!
+                </h3>
             </Modal.Header>
             <Modal.Body>
                 <Form>
@@ -42,26 +46,33 @@ const StepOneComponent = ({ setStep }) => {
                 <p><em>Please state your age-group to get personalized help.</em></p>
                 <div className="d-flex align-content-center">
                     <Form.Check id="age-group-1" onChange={handleCheck}  value="13-19" className="m-2"></Form.Check>
-                    <Form.Label htmlFor="age-group-1" className="m-2">13-19</Form.Label>
+                    <Form.Label htmlFor="age-group-1" className="m-2">13-19 <small><em>(Teenager)</em></small></Form.Label>
                 </div>
                 <div className="d-flex align-content-center">
                     <Form.Check id="age-group-2" onChange={handleCheck}  value="20-35" className="m-2"></Form.Check>
-                    <Form.Label htmlFor="age-group-2" className="m-2">20-35</Form.Label>
+                    <Form.Label htmlFor="age-group-2" className="m-2">20-35 <small><em>(Youth)</em></small></Form.Label>
                 </div>
                 <div className="d-flex align-content-center">
                     <Form.Check id="age-group-3" onChange={handleCheck}  value="36-60" className="m-2"></Form.Check>
-                    <Form.Label htmlFor="age-group-3" className="m-2">36-60</Form.Label>
+                    <Form.Label htmlFor="age-group-3" className="m-2">36-60 <small><em>(Adult)</em></small></Form.Label>
                 </div>
                 <div className="d-flex align-content-center">
                     <Form.Check id="age-group-4" onChange={handleCheck}  value="61+" className="m-2"></Form.Check>
-                    <Form.Label htmlFor="age-group-4" className="m-2">61+</Form.Label>
+                    <Form.Label htmlFor="age-group-4" className="m-2">61+ <small><em>(Senior Citizen)</em></small></Form.Label>
                 </div>
         </div>
     )
 }
 
 const StepTwoComponent = ({ setActive }) => {
+    let [errs, setErrs] = useState([])
+
     const submitForm = () => {
+        const lang = sessionStorage.getItem("preff-lang")
+        if(!!lang === false) {
+            setErrs(["Please pick at least one preffered language."])
+            return
+        }
         sessionStorage.setItem("visited_user", true)
         setActive(false)
     }
@@ -72,8 +83,9 @@ const StepTwoComponent = ({ setActive }) => {
 
     return (
         <div>
-            <p><em>Please choose preferred language</em></p>
-                <div className="d-flex align-content-center">
+            <p className="mb-3"><em>Please choose preferred language.</em></p>
+            {errs.length > 0 && errs.map((val, key) => <small className="d-flex shadow-sm justify-content-center alert alert-info mb-2" key={key} >{val}</small>)}
+                <div className="d-flex align-content-center mt-3">
                     <Form.Check onChange={handleCheck} value="english" id="lang-group-1" className="m-2"></Form.Check>
                     <Form.Label htmlFor="lang-group-1" className="m-2">English</Form.Label>
                 </div>
@@ -81,7 +93,11 @@ const StepTwoComponent = ({ setActive }) => {
                     <Form.Check onChange={handleCheck} value="kiswahili" id="lang-group-2" className="m-2"></Form.Check>
                     <Form.Label htmlFor="lang-group-2" className="m-2">Kiswahili</Form.Label>
                 </div>
-                <Button variant="primary" onClick={submitForm} >Submit</Button>
+                <Button className="mt-2 shadow" variant="primary" onClick={submitForm} >
+                    <FontAwesomeIcon icon={faArrowAltCircleRight}  />
+                    <span className="m-2">Submit</span>
+                    
+                </Button>
         </div>
     )
 }
