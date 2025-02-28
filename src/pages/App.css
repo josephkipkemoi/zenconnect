@@ -1,3 +1,6 @@
+.header img {
+    width: 112px;
+}
 .card-box {
     min-width: 40%;
     max-width: 720px;

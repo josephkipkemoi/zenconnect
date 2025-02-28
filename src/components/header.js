@@ -1,6 +1,4 @@
-import { faAddressBook, faContactBook, faMap } from "@fortawesome/free-regular-svg-icons"
-import { faBook, faHome, faKitMedical, faPeopleGroup, faPhone, faPhoneSquare, faSignHanging, faSquarePhone } from "@fortawesome/free-solid-svg-icons"
-import { faMobilePhone } from "@fortawesome/free-solid-svg-icons/faMobilePhone"
+import { faBook, faHome, faKitMedical, faMap, faPeopleGroup, faSignHanging, faSquarePhone } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Container, Nav, Navbar } from "react-bootstrap"
 import { Link } from "react-router-dom"
@@ -8,11 +6,12 @@ import { Link } from "react-router-dom"
 const HeaderComponent = () => {
     return (
         <header>
-            <nav className="d-sm-flex align-items-center justify-content-center m-3">
+            <nav className="d-sm-flex align-items-center justify-content-center m-3 w-100">
                 <Navbar expand="lg" className="bg-body-tertiary">
-                    <Container>
                         <Navbar.Brand href="/">
-                                <h1 className="m-2">ZenConnect</h1>
+                                <h1 className="m-2 header">
+                                    ZenConnect
+                                </h1>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
@@ -47,7 +46,6 @@ const HeaderComponent = () => {
                             </Link>
                         </Nav>
                         </Navbar.Collapse>
-                    </Container>
                 </Navbar>
             </nav>
             <Container className="d-flex justify-content-end mb-3">
