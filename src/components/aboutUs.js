@@ -3,6 +3,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Button, Card } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
+import AnshPP from "../images/ansh_pp.png"
+import JosephPP from "../images/joseph_pp.png"
+import EshaPP from "../images/esha_pp.png"
+import NatashaPP from "../images/natasha_pp.png"
+import SalehPP from "../images/saleh_pp.png"
+import JanetPP from "../images/janet_pp.png"
+
 const AboutUsComponent = () => {
     return (
         <Card className="border-0 shadow about-us-page">
@@ -45,19 +52,22 @@ const AboutUsComponent = () => {
                 <hr className="text-info mt-4 mb-4"/>
                 <h5 className="fw-bold mb-3">Our Story</h5>
                 <p>
-                    (Share the journey behind ZenConnect—why it was created, personal experiences,
-                    or market needs that inspired its development.)
+                   <b>ZenConnect</b>  was created to bring clarity to digital communication.
+                    In a world of distractions, we envisioned a more mindful way to connect.
+                    Our platform simplifies interactions while promoting balance and purpose.
+                    More than just a tool, it’s a movement toward digital harmony.
+                    We’re redefining how technology enhances, rather than disrupts, life and mental health awareness.
                 </p>
                 <hr className="text-info mt-4 mb-4"/>
                 <h5 className="fw-bold mb-3">Meet the Team</h5>
                 <div className="row justify-content-center">
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="esha_patel" className="img-fluid"/>
-                            <h6 className="fw-bold">Esha Patel</h6>
+                            <img src={EshaPP} alt="esha_patel" className="img-fluid rounded shadow-sm"/>
+                            <h6 className="fw-bold mt-3">Esha Patel</h6>
                             <p>Team Leader</p>
                             <p>
-                                Esha Patel is a graduate with a Diploma in Computer Science
+                                Esha Patel is a graduate with a Diploma in Computer Science and a Full-Stack Developer
                             </p>                        
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
@@ -71,11 +81,11 @@ const AboutUsComponent = () => {
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="natasha_karanja" className="img-fluid"/>
-                            <h6 className="fw-bold">Natasha Karanja</h6>
+                            <img src={NatashaPP} alt="natasha_karanja" className="img-fluid rounded shadow-sm"/>
+                            <h6 className="fw-bold mt-3">Natasha Karanja</h6>
                             <p>Deputy Team Leader</p>
                             <p>
-                                Natasha is a Full-Stack Developer with great passion in creating web applications
+                                A passionate full-stack developer student with a strong drive for creativity and innovation. Training in both front-end and back-end technologies, always eager to learn, solve complex problems, and build user-friendly, efficient, and visually appealing applications.
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
@@ -89,11 +99,11 @@ const AboutUsComponent = () => {
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="joseph_kipkemoi" className="img-fluid"/>
-                            <h6 className="fw-bold">Joseph Kipkemoi</h6>
+                            <img src={JosephPP} alt="joseph_kipkemoi" className="img-fluid rounded shadow-sm"/>
+                            <h6 className="fw-bold mt-3">Joseph Kipkemoi</h6>
                             <p>Software Developer</p>
                             <p>
-                               Joseph is a Software Developer who likes to code 24/7
+                               Joseph is a Software Developer who has specialized in Javascript, PHP and Go
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
@@ -107,20 +117,24 @@ const AboutUsComponent = () => {
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="ansh_patel" className="img-fluid"/>
-                            <h6 className="fw-bold">Ansh Patel</h6>
+                            <img src={AnshPP} alt="ansh_patel" className="img-fluid rounded shadow-sm"/>
+                            <h6 className="fw-bold mt-3">Ansh Patel</h6>
                             <p>Technical Engineer</p>
                             <p>
-                               Ansh is a Technical Engineer...
+                                Ansh is technical engineer who combines expert problem-solving skills with in-depth technical knowledge to design, implement, and maintain innovative solutions. 
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
-                            <Button variant="dark" className="m-1">
+                            <a 
+                            target="_blank"
+                            href=" https://www.linkedin.com/in/ansh-patel-245513337?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"  
+                            className="btn btn-dark m-1"
+                            >
                                 <FontAwesomeIcon icon={faLinkedin}/>
-                            </Button>
-                            <Button variant="dark" className="m-1">
+                            </a>
+                            <a target="_blank" href="https://github.com/Patel-anshj1022" className="btn btn-dark m-1">
                                 <FontAwesomeIcon icon={faGithub} />
-                            </Button>
+                            </a>
                         </Card.Footer>
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
@@ -143,20 +157,20 @@ const AboutUsComponent = () => {
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="saleh_hassan" className="img-fluid"/>
-                            <h6 className="fw-bold">Saleh Hassan</h6>
+                            <img src={SalehPP} alt="saleh_hassan" className="img-fluid rounded shadow-sm"/>
+                            <h6 className="fw-bold mt-3">Saleh Hassan</h6>
                             <p>Project Manager</p>
                             <p>
                                Saleh is the Project Manager...
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
-                            <Button variant="dark" className="m-1">
+                            <a target="_blank" href="https://www.linkedin.com/in/saleh-nasser-429513337" className="m-1 btn btn-dark">
                                 <FontAwesomeIcon icon={faLinkedin}/>
-                            </Button>
-                            <Button variant="dark" className="m-1">
+                            </a>
+                            <a target="_blank" href="https://github.com/M-Saleh-N" className="m-1 btn btn-dark">
                                 <FontAwesomeIcon icon={faGithub} />
-                            </Button>
+                            </a>
                         </Card.Footer>
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
@@ -179,11 +193,11 @@ const AboutUsComponent = () => {
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="janet_rose" className="img-fluid"/>
-                            <h6 className="fw-bold">Janet Rose</h6>
+                            <img src={JanetPP} alt="janet_rose" className="img-fluid rounded shadow-sm"/>
+                            <h6 className="fw-bold mt-3">Janet Rose</h6>
                             <p>Head of Marketing</p>
                             <p>
-                               Janet is the head of Marketing...
+                               Janet is the head of Marketing and a Front End Software Developer
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
