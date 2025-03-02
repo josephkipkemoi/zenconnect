@@ -1,9 +1,25 @@
 import { faBook, faHome, faKitMedical, faMap, faPeopleGroup, faSignHanging, faSquarePhone } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Container, Nav, Navbar } from "react-bootstrap"
+import { useEffect, useState } from "react"
+import { Button, Container, Nav, Navbar } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 const HeaderComponent = () => {
+    let [isAuth, setIsAuth] = useState(false)
+
+    const handleLogout = () => {
+        localStorage.removeItem("token")
+        localStorage.removeItem("user")
+        setIsAuth(false)
+    }
+
+    useEffect(() => {
+        const isAuthenticated = localStorage.getItem("token")
+        if(isAuthenticated) {
+            setIsAuth(true)
+        }
+    }, [isAuth])
+
     return (
         <header>
             <nav className="d-sm-flex align-items-center justify-content-center m-3 w-100">
@@ -49,8 +65,13 @@ const HeaderComponent = () => {
                 </Navbar>
             </nav>
             <Container className="d-flex justify-content-end mb-3">
-                <Link className="text-right nav-link btn m-1" to="/login">Login</Link>
-                <Link className="text-right nav-link btn m-1" to="/register">Register</Link>
+                { !isAuth ? 
+                    <>    
+                        <Link className="text-right nav-link btn m-1" to="/login">Login</Link>
+                        <Link className="text-right nav-link btn m-1" to="/register">Register</Link>
+                    </> :
+                    <Button variant="dark" onClick={handleLogout}>Logout</Button>}
+          
             </Container>
         </header>
     )
