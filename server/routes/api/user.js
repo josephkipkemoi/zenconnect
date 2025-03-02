@@ -81,7 +81,7 @@ router.post("/login", [
     const erros = validationResult(req)
 
     if(!erros.isEmpty()){
-        return res.status(400).json({erros: erros.array()})
+        return res.status(400).json({errors: erros.array()})
     }
 
     const { phone_number, password } = req.body
