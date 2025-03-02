@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Container, Card } from "react-bootstrap";
 import "./registration.css";
+import axios from "axios";
 
 
 
@@ -12,15 +13,45 @@ const RegisterComponent = () => {
         phone_number: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirm_password: '',
+        gender: ''
     })
 
-    const {full_name, user_name, phone_number, email, password, confirmPassword } = formData
+    let {full_name, user_name, phone_number, email, password, confirm_password , gender} = formData
 
-    const handleChange = (e) => setFormData(() => ({[e.target.name]: e.target.value}))
+    const handleChange = (e) => setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
 
-    const registerUser = () => {
-        console.log(formData)
+    const registerUser = async () => {
+        if(password !== confirm_password) {
+            setErrs(["Passwords do not match"])
+            return
+        }
+        let no = phone_number.split("")
+        no[0] = "254"
+        let phone = no.join("")
+        try {
+            const res = await axios.post("http://localhost:5000/api/users/register", {
+                full_name,
+                user_name,
+                phone_number: phone,
+                email,
+                password,
+                confirm_password,
+                gender
+            })
+            if(res.status === 200) {
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("user", res.data.user)
+            }
+            console.log(res)
+        } catch (error) {
+            const { message, status } = error.toJSON()
+            if(status === 400) {
+                error.response.data.errors?.map(el => setErrs([el.msg]))
+                return
+            }
+            setErrs([message])
+        }
     }
 
     return (
@@ -30,6 +61,9 @@ const RegisterComponent = () => {
                     <Card.Title>Register</Card.Title>
                     <div className="container">
                         <div className="title">Registration Form</div>
+                        <div>
+                            {errs.length > 0 && errs.map((val, key) => <span className="d-block alert alert-danger mt-3 mb-3" key={key} >{val}</span>)}
+                        </div>
                             <div className="user-details">
                                 <div className="input-box">
                                     <span className="details">Full Name</span>
@@ -60,23 +94,10 @@ const RegisterComponent = () => {
                             <div className="gender-details">
                                 <span className="gender-title">Gender</span>
                                 <div className="category">
-                                    <label htmlFor="dot-1">
-                                        <input type="radio" name="gender" id="dot-1" />
-                                        <span className="dot one"></span>
-                                        <span className="gender">Female</span>
-                                    </label>
-
-                                    <label htmlFor="dot-2">
-                                        <input type="radio" name="gender" id="dot-2" />
-                                        <span className="dot two"></span>
-                                        <span className="gender">Male</span>
-                                    </label>
-
-                                    <label htmlFor="dot-3">
-                                        <input type="radio" name="gender" id="dot-3" />
-                                        <span className="dot three"></span>
-                                        <span className="gender">Other</span>
-                                    </label>
+                                    <select onChange={handleChange} name="gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
                                 </div>
                             </div>
 

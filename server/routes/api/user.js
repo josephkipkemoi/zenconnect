@@ -18,7 +18,7 @@ router.post("/register",[
     const errors = validationResult(req)
 
     if(!errors.isEmpty()){
-        return res.status(400).json({erros: erros.array()})
+        return res.status(400).json({errors: errors.array()})
     }
 
     const { full_name, user_name, phone_number, email, password, confirm_password, gender } = req.body
@@ -60,7 +60,10 @@ router.post("/register",[
             {expiresIn: 36000},
             (err, token) => {
                 if(err) throw err;
-                res.json({token})
+                res.json({
+                    user,
+                    token
+                })
             }
         )
         
@@ -111,7 +114,10 @@ router.post("/login", [
             {expiresIn: 36000},
             (err, token) => {
                 if(err) throw err;
-                res.json({token})
+                res.json({
+                    user: JSON.stringify(user),
+                    token
+                })
             }
         )
 

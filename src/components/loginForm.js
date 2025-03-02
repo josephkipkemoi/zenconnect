@@ -25,7 +25,11 @@ const LogInFormComponent = () => {
                 password,
                 rememberMe
             })
-            console.log(res)
+            if(res.status === 200) {
+                localStorage.setItem("token", res.data.token)
+                localStorage.setItem("user", res.data.user)
+                window.location.href = "/"
+            }
         } catch (error) {
             const { message, status } = error.toJSON()
             if(status === 400) {
