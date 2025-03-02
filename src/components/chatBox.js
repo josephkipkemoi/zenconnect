@@ -3,11 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBrain } from "@fortawesome/free-solid-svg-icons"
 import { Button, FloatingLabel, Form } from "react-bootstrap"
 import { faFaceSmile } from "@fortawesome/free-regular-svg-icons"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const ChatBox = () => {
+    let [completedTyping, setCompletedTyping] = useState(false)
     const [outGoingMessage, setOutgoingMessage] = useState("")
-
+    const chatHistory = "Hello, Welcome, ZenConnect is a digital platform dedicated to fostering mental wellness through accessible resources, professional support, and a compassionate community. Our goal is to break the stigma around mental health and provide a safe space where individuals can seek help, learn, and grow."
+    let [displayResponse, setDisplayResponse] = useState("")
+    
     const handleMessage = (e) => {
         sessionStorage.setItem("out-going",e.target.value)
     }
@@ -17,6 +20,23 @@ const ChatBox = () => {
         setOutgoingMessage(msg)
     }
 
+    useEffect(() => {
+        setCompletedTyping(false)
+        
+        let i = 0
+        const interValid = setInterval(() => {
+            setDisplayResponse(chatHistory.slice(0, i));
+
+            i++;
+        
+            if (i > chatHistory.length) {
+              clearInterval(interValid);
+              setCompletedTyping(true);
+            }            
+        },45)
+
+        return () => clearInterval(interValid)
+    }, [])
     return (
         <div className="container chat-box-container d-flex flex-column justify-content-between bg-none rounded-4">
             <div className="d-flex flex-column justify-content-start align-items-start chat-box-child">
@@ -25,7 +45,18 @@ const ChatBox = () => {
                         <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
                     </div>
                     <div className="bg-light p-2 rounded-4 m-1 shadow">
-                        <p className="p-3">Hello, Welcome, ZenConnect is a digital platform dedicated to fostering mental wellness through accessible resources, professional support, and a compassionate community. Our goal is to break the stigma around mental health and provide a safe space where individuals can seek help, learn, and grow.</p>
+                        <p className="p-3">
+                            {displayResponse}
+                            {!completedTyping &&
+                             <svg
+                                viewBox="8 4 8 16"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="cursor"
+                            >
+                                <rect x="10" y="6" width="4" height="12" fill="#fff" />
+                            </svg>
+                            }                           
+                        </p>
                     </div>
                 </div>
                 <div className="w-100">

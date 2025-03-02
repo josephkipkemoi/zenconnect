@@ -23,3 +23,22 @@ h1,h2,h3,h4,h5,h6 {
 .resources-page {
     line-height: 32px;
 }
+.cursor {
+    display: inline-block;
+    width: 1ch;
+    animation: flicker 0.5s infinite;
+    margin-bottom: 4px;
+    color: black;
+    background-color: black;
+}
+@keyframes flicker {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+}
