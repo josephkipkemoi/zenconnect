@@ -14,7 +14,7 @@ const ContactUsComponent = () => {
             <div class="card p-4">
               <form id="multiStepForm">
                 <div class="step active" id="step1">
-                  <h4>Step 1: Personal Details</h4>
+                  <h4>Step 1: Details</h4>
                   <div class="mb-3">
                     <label class="form-label">Full Name</label>
                     <input type="text" class="form-control" required />
@@ -59,7 +59,7 @@ const ContactUsComponent = () => {
               </form>
             </div>
           </div>
-          
+
           
 
         </Card.Header>
