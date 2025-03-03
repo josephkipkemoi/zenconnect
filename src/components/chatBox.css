@@ -7,4 +7,8 @@
 .chat-user {
     display: block;
     float: right;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    width: 100%;
 }

@@ -10,12 +10,12 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 router.get("/",[
     check("message", "Please enter a message")
 ], async(req, res) => {
-    const { message } = req.query
+    const { message } = req.body
     const result = await model.generateContent(message);
 
     res.json({
         message: result.response.text()
-    })
+    })  
 })
 
 module.exports = router

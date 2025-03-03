@@ -67,34 +67,34 @@ const RegisterComponent = () => {
                             <div className="user-details">
                                 <div className="input-box">
                                     <span className="details">Full Name</span>
-                                    <input onChange={handleChange} name="full_name" type="text" placeholder="Enter your full name" required />
+                                    <input className="form-control" onChange={handleChange} name="full_name" type="text" placeholder="Enter your full name" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">User Name</span>
-                                    <input onChange={handleChange} type="text" name="user_name" placeholder="Enter your user name" required />
+                                    <input className="form-control" onChange={handleChange} type="text" name="user_name" placeholder="Enter your user name" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Phone Number</span>
-                                    <input onChange={handleChange} type="number" name="phone_number" placeholder="Enter your phone number" required />
+                                    <input className="form-control" onChange={handleChange} type="number" name="phone_number" placeholder="Enter your phone number" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Email</span>
-                                    <input onChange={handleChange} type="email" name="email" placeholder="Enter your email" required />
+                                    <input className="form-control" onChange={handleChange} type="email" name="email" placeholder="Enter your email" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Password</span>
-                                    <input onChange={handleChange} type="password" name="password" placeholder="Enter your password" required />
+                                    <input className="form-control" onChange={handleChange} type="password" name="password" placeholder="Enter your password" required />
                                 </div>
                                 <div className="input-box">
                                     <span className="details">Confirm Password</span>
-                                    <input onChange={handleChange} type="password" name="confirm_password" placeholder="Enter your password again" required />
+                                    <input className="form-control" onChange={handleChange} type="password" name="confirm_password" placeholder="Enter your password again" required />
                                 </div>
                             </div>
 
                             <div className="gender-details">
                                 <span className="gender-title">Gender</span>
                                 <div className="category">
-                                    <select onChange={handleChange} name="gender">
+                                    <select onChange={handleChange} className="form-control" name="gender">
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
                                     </select>
@@ -102,7 +102,7 @@ const RegisterComponent = () => {
                             </div>
 
                             <div className="button">
-                                <input type="submit" onClick={registerUser} value="Register!" />
+                                <input className="btn btn-primary m-2" type="submit" onClick={registerUser} value="Register" />
                             </div>
                     </div>
                 </Card.Body>
