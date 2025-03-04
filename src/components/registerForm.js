@@ -82,11 +82,11 @@ const RegisterComponent = () => {
                                     <input className="form-control" onChange={handleChange} type="email" name="email" placeholder="Enter your email" required />
                                 </div>
                                 <div className="input-box">
-                                    <span className="details">Password</span>
+                                    <span className="details">Password <small>(Minimum 8 characters)</small></span>
                                     <input className="form-control" onChange={handleChange} type="password" name="password" placeholder="Enter your password" required />
                                 </div>
                                 <div className="input-box">
-                                    <span className="details">Confirm Password</span>
+                                    <span className="details">Confirm Password <small>(Minimum 8 characters)</small></span>
                                     <input className="form-control" onChange={handleChange} type="password" name="confirm_password" placeholder="Enter your password again" required />
                                 </div>
                             </div>
