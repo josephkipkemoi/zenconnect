@@ -158,10 +158,10 @@ const CommunityPostsComponent = ({ stateChanged }) => {
             <div>
                 <ul>
                     {receivedMessages.map((val,key) => {
-                        const { category, message } = val
+                        const { category, message, _id } = val
                         return (
                             <li key={key}>
-                                <Link to={`discussions`} className="nav-link text-decoration-underline text-primary fw-bold">
+                                <Link to={`discussions?message=${message}`} className="nav-link text-decoration-underline text-primary fw-bold">
                                     {category}: {message}
                                 </Link>
                             </li>
