@@ -15,6 +15,7 @@ app.use(express.json({ extended: false }))
 app.use("/api/users", require("./routes/api/user"))
 // app.use("/api/auth", require("./routes/api/auth"))
 app.use("/api/chatbot", require("./routes/api/chatbot"))
+app.use("/api/community", require("./routes/api/community"))
 
 // Serve static assets in production
 app.use(express.static("./build"))
