@@ -1,10 +1,14 @@
-import { faRightToBracket } from "@fortawesome/free-solid-svg-icons"
+import { faRightToBracket, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import axios from "axios"
 import { useState } from "react"
-import { Button, Card, Container } from "react-bootstrap"
+import { Button, Card, Container, Modal } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 const CommunityComponent = () => {
+    const [successMessage, setSuccessMessage] = useState("")
+    const [successModalOpen, setSuccessModalOpen] = useState(false)
+
     const [categories,] = useState([
         "Depression", 
         "Anxiety Disorders", 
@@ -30,13 +34,19 @@ const CommunityComponent = () => {
 
     const {category, message} = formData
 
-    const postMessage = () => {
-        console.log(category, message)
+    const postMessage = async () => {
+        try {
+            const res = await axios.post(`http://localhost:5000/api/community?category=${category}&message=${message}`)
+            if(res.status === 200) {
+                setSuccessMessage(res.data.message)
+                setSuccessModalOpen(true)
+            }
+        } catch (error) {
+            console.error(error)
+        }
     }
 
-    const handleChange = (e) => {
-        setFormData(() => ({[e.target.name]: e.target.value}))
-    }
+    const handleChange = (e) => setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
 
     return (
         <Container>
@@ -44,8 +54,7 @@ const CommunityComponent = () => {
                 <Card.Header className="p-3 bg-success text-white">
                     <h4>Get support from online community</h4>
                 </Card.Header>
-                <Card.Body>
-                  
+                <Card.Body>                  
                     <Card.Text>
                         <div className="row">
                             <div className="col-sm-9 d-flex flex-column p-3">                                
@@ -111,7 +120,33 @@ const CommunityComponent = () => {
                     </Card.Text>
                 </Card.Body>
             </Card>
+            <SuccessModal 
+                modalOpen={successModalOpen} 
+                setSuccessModalOpen={setSuccessModalOpen}
+                message={successMessage}
+            />
         </Container>
+    )
+}
+
+const SuccessModal = ({ modalOpen, setSuccessModalOpen, message }) => {
+
+    const handleModal = () => setSuccessModalOpen(false)
+
+    return (
+        <Modal show={modalOpen} centered>
+            <Modal.Header className="bg-success text-white">
+                Post Sent Successfully
+            </Modal.Header>
+            <Modal.Body>
+                <p>{message}</p>              
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="dark" onClick={handleModal}>
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
     )
 }
 
