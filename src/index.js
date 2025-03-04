@@ -11,6 +11,7 @@ import ContactUs from './pages/ContactUs';
 import Resources from './pages/Resources';
 import Community from './pages/Community';
 import Register from './pages/Register';
+import Discussions from './pages/Discussions';
 // import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
@@ -47,9 +48,13 @@ const router = createBrowserRouter([
     element: <Community/>,
   },
   {
+    path: "/community/discussions",
+    element: <Discussions/>,
+  },
+  {
     path: "/register",
     element: <Register/>,
-  }
+  } 
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
