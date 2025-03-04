@@ -4,7 +4,7 @@ const auth = require("../../middleware/auth")
 const {check} = require('express-validator');
 
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI("AIzaSyACB2m7AmnfW0PpkqXqPfBn0pjj3pQ0nwUa");
+const genAI = new GoogleGenerativeAI("AIzaSyACB2m7AmnfW0PpkqXqPfBn0pjj3pQ0nwU");
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 router.get("/",[
