@@ -1,7 +1,7 @@
 import { faRightToBracket, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Button, Card, Container, Modal } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
@@ -24,13 +24,6 @@ const CommunityComponent = () => {
         category: '',
         message: ''
     })
-
-    let [receivedMessages, ] = useState([
-        "I am having a hard time at school, I do not seem to understand anything! Please help me.",
-        "My husband always beats me all the time, what can I do?",
-        "I am addicted to weed and alcohol, how can I overcome my addiction?",
-        "Looking for work has taken a toll on me, I have searched for any kind of job for the past one year all in vain, I am trained Accountant by profession, I feel like killing myself"
-    ])
 
     const {category, message} = formData
 
@@ -78,23 +71,9 @@ const CommunityComponent = () => {
                                        <span className="m-2">Post Question</span> 
                                     </Button>
                                 </div>  
-                                <hr className="text-secondary" />        
-                                <div>
-                                    <h5 className="fw-bold mb-3 mt-3">Previous Q&A</h5>
-                                    <div>
-                                        <ul>
-                                            {receivedMessages.map((val,key) => {
-                                                return (
-                                                    <li key={key}>
-                                                    <Link to={`discussions`} className="nav-link text-decoration-underline text-primary fw-bold">
-                                                        {val}
-                                                    </Link>
-                                                </li>
-                                                )
-                                            })}                                       
-                                        </ul>
-                                    </div>
-                                </div>               
+                                <hr className="text-secondary" />      
+                                <CommunityPostsComponent stateChanged={successModalOpen}/>  
+                                             
                             </div> 
                             <div className="col-sm-3 p-3">
                                 <p className="fw-bold">Step 1: Draft your question</p>
@@ -147,6 +126,50 @@ const SuccessModal = ({ modalOpen, setSuccessModalOpen, message }) => {
                 </Button>
             </Modal.Footer>
         </Modal>
+    )
+}
+
+const CommunityPostsComponent = ({ stateChanged }) => {
+
+    let [receivedMessages, setReceivedMessages ] = useState([
+        "I am having a hard time at school, I do not seem to understand anything! Please help me.",
+        "My husband always beats me all the time, what can I do?",
+        "I am addicted to weed and alcohol, how can I overcome my addiction?",
+        "Looking for work has taken a toll on me, I have searched for any kind of job for the past one year all in vain, I am trained Accountant by profession, I feel like killing myself"
+    ])
+
+    const fetCommunityPosts = async () => {
+        try {
+            const res = await axios.get("http://localhost:5000/api/community/posts")
+            if(res.status === 200) {
+                setReceivedMessages(res.data.posts)
+            }
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    useEffect(() => {
+        fetCommunityPosts()
+    }, [stateChanged])
+    return (
+        <div>
+            <h5 className="fw-bold mb-3 mt-3">Previous Q&A</h5>
+            <div>
+                <ul>
+                    {receivedMessages.map((val,key) => {
+                        const { category, message } = val
+                        return (
+                            <li key={key}>
+                                <Link to={`discussions`} className="nav-link text-decoration-underline text-primary fw-bold">
+                                    {category}: {message}
+                                </Link>
+                            </li>
+                        )
+                    })}                                       
+                </ul>
+            </div>
+        </div>
     )
 }
 
