@@ -28,8 +28,32 @@ router.post("/", [
         })
     } catch (error) {
         console.error(error)
+        res.json({
+            message: "Server Error"
+        })
     }
 
+})
+
+router.get("/posts", async (req, res) => {
+    try {
+        
+        const communityPosts = await Community.find()
+
+        if(!communityPosts) {
+            return res.status(400).json({ message: "There are no community posts currently"})
+        }
+
+        res.json({
+            posts: communityPosts
+        })
+
+    } catch (error) {
+        console.error(error)
+        res.json({
+            message: "Server Error"
+        })
+    }
 })
 
 module.exports = router
