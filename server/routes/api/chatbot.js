@@ -10,8 +10,9 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 router.get("/",[
     check("message", "Please enter a message")
 ], async(req, res) => {
-    const { message } = req.body
-    const result = await model.generateContent(message);
+    const { message, age_group, preff_lang } = req.query
+    const prompt = `as a ${age_group} year old, please give advice in ${preff_lang} with not less than 150 words, give an answer as a therapist, this is my message, ${message}`
+    const result = await model.generateContent(prompt)
 
     res.json({
         message: result.response.text()
