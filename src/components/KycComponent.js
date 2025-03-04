@@ -20,7 +20,7 @@ const KycComponent = ({ checkTime }) => {
     }, [checkTime])
 
     return (
-        <Modal show={active}>
+        <Modal show={active} centered>
             <Modal.Header className="d-flex justify-content-center bg-success text-white">
                 <h3>
                     Quick one!
@@ -85,19 +85,22 @@ const StepTwoComponent = ({ setActive }) => {
         <div>
             <p className="mb-3"><em>Please choose preferred language.</em></p>
             {errs.length > 0 && errs.map((val, key) => <small className="d-flex shadow-sm justify-content-center alert alert-info mb-2" key={key} >{val}</small>)}
-                <div className="d-flex align-content-center mt-3">
-                    <Form.Check onChange={handleCheck} value="english" id="lang-group-1" className="m-2"></Form.Check>
-                    <Form.Label htmlFor="lang-group-1" className="m-2">English</Form.Label>
-                </div>
-                <div className="d-flex align-content-center">
-                    <Form.Check onChange={handleCheck} value="kiswahili" id="lang-group-2" className="m-2"></Form.Check>
-                    <Form.Label htmlFor="lang-group-2" className="m-2">Kiswahili</Form.Label>
-                </div>
-                <Button className="mt-2 shadow" variant="primary" onClick={submitForm} >
-                    <FontAwesomeIcon icon={faArrowAltCircleRight}  />
-                    <span className="m-2">Submit</span>
-                    
-                </Button>
+                <select onChange={handleCheck} className="form-select">
+                    <option value="english">English</option>
+                    <option value="swahili">Swahili</option>
+                    <option value="kikuyu">Kikuyu</option>
+                    <option value="luhya">Luhya</option>
+                    <option value="kamba">Kamba</option>
+                    <option value="dholuo">Luo</option>
+                    <option value="maasai">Maasai</option>
+                    <option value="somali">Somali</option>
+                </select>
+                <div className="d-flex justify-content-center mt-3">
+                    <Button className="mt-2 shadow" variant="primary" onClick={submitForm} >
+                        <FontAwesomeIcon icon={faArrowAltCircleRight}  />
+                        <span className="m-2">Submit</span>                    
+                    </Button>
+                </div>             
         </div>
     )
 }
