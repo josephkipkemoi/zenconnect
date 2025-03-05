@@ -136,7 +136,7 @@ const CommunityPostsComponent = ({ stateChanged }) => {
     let [receivedMessages, setReceivedMessages ] = useState([
         "I am having a hard time at school, I do not seem to understand anything! Please help me.",
         "My husband always beats me all the time, what can I do?",
-        "I am addicted to weed and alcohol, how can I overcome my addiction?",
+        "I am addicted to substance use, how can I overcome my addiction?",
         "Looking for work has taken a toll on me, I have searched for any kind of job for the past one year all in vain, I am trained Accountant by profession, I feel like killing myself"
     ])
 
@@ -144,7 +144,7 @@ const CommunityPostsComponent = ({ stateChanged }) => {
         try {
             const res = await axios.get("http://localhost:5000/api/community/posts")
             if(res.status === 200) {
-                setReceivedMessages(res.data.posts)
+                // setReceivedMessages(res.data.posts)
             }
         } catch (error) {
             console.error(error)
@@ -160,11 +160,11 @@ const CommunityPostsComponent = ({ stateChanged }) => {
             <div>
                 <ul>
                     {receivedMessages?.map((val,key) => {
-                        const { category, message, _id } = val
+                        // const { category, message, _id } = val
                         return (
                             <li key={key}>
-                                <Link to={`discussions?message=${message}`} className="nav-link text-decoration-underline text-primary fw-bold">
-                                    {category}: {message}
+                                <Link to={`discussions?message=${val}`} className="nav-link text-decoration-underline text-primary fw-bold">
+                                    {val}
                                 </Link>
                             </li>
                         )
