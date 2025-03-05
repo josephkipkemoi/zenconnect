@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios"
 import { useEffect, useState } from "react"
 import { Button, Card, Container, Modal } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Link, redirect, useLocation } from "react-router-dom"
 
 const CommunityComponent = () => {
     const [successMessage, setSuccessMessage] = useState("")
@@ -28,6 +28,8 @@ const CommunityComponent = () => {
     const {category, message} = formData
 
     const postMessage = async () => {
+   
+        window.location.href = (`community/discussions?message=${message}`)
         try {
             const res = await axios.post(`http://localhost:5000/api/community?category=${category}&message=${message}`)
             if(res.status === 200) {
@@ -58,7 +60,7 @@ const CommunityComponent = () => {
                                     </label>
                                     <label>Choose one category you may be suffering from:</label>
                                     <select name="category" onChange={handleChange} className="p-3 d-block m-2 border-0">
-                                        {categories.map((val, key) => <option key={key} value={val}>{val}</option>)}
+                                        {categories?.map((val, key) => <option key={key} value={val}>{val}</option>)}
                                     </select>
                                 </div>
                                 <div className="mt-3">
@@ -89,7 +91,7 @@ const CommunityComponent = () => {
                                 <Card.Header className="bg-success text-white fw-bold">
                                     More helpful links
                                 </Card.Header>  
-                                {categories.map((val, key) => <Card.Text><Link to={`/resources`} className="nav-link text-success m-2">{val}</Link></Card.Text>)}
+                                {categories?.map((val, key) => <Card.Text key={key}><Link to={`/resources`} className="nav-link text-success m-2">{val}</Link></Card.Text>)}
                                 <Card.Text>
 
                                 </Card.Text>
@@ -115,7 +117,7 @@ const SuccessModal = ({ modalOpen, setSuccessModalOpen, message }) => {
     return (
         <Modal show={modalOpen} centered>
             <Modal.Header className="bg-success text-white">
-                Post Sent Successfully
+                Recieved
             </Modal.Header>
             <Modal.Body>
                 <p>{message}</p>              
@@ -157,7 +159,7 @@ const CommunityPostsComponent = ({ stateChanged }) => {
             <h5 className="fw-bold mb-3 mt-3">Previous Q&A</h5>
             <div>
                 <ul>
-                    {receivedMessages.map((val,key) => {
+                    {receivedMessages?.map((val,key) => {
                         const { category, message, _id } = val
                         return (
                             <li key={key}>
