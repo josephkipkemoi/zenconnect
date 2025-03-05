@@ -30,15 +30,15 @@ const CommunityComponent = () => {
     const postMessage = async () => {
    
         window.location.href = (`community/discussions?message=${message}`)
-        try {
-            const res = await axios.post(`http://localhost:5000/api/community?category=${category}&message=${message}`)
-            if(res.status === 200) {
-                setSuccessMessage(res.data.message)
-                setSuccessModalOpen(true)
-            }
-        } catch (error) {
-            console.error(error)
-        }
+        // try {
+        //     const res = await axios.post(`http://localhost:5000/api/community?category=${category}&message=${message}`)
+        //     if(res.status === 200) {
+        //         setSuccessMessage(res.data.message)
+        //         setSuccessModalOpen(true)
+        //     }
+        // } catch (error) {
+        //     console.error(error)
+        // }
     }
 
     const handleChange = (e) => setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
