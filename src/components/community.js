@@ -30,15 +30,15 @@ const CommunityComponent = () => {
     const postMessage = async () => {
    
         window.location.href = (`community/discussions?message=${message}`)
-        // try {
-        //     const res = await axios.post(`http://localhost:5000/api/community?category=${category}&message=${message}`)
-        //     if(res.status === 200) {
-        //         setSuccessMessage(res.data.message)
-        //         setSuccessModalOpen(true)
-        //     }
-        // } catch (error) {
-        //     console.error(error)
-        // }
+        try {
+            const res = await axios.post(`http://localhost:5000/api/community?category=${category}&message=${message}`)
+            if(res.status === 200) {
+                setSuccessMessage(res.data.message)
+                setSuccessModalOpen(true)
+            }
+        } catch (error) {
+            console.error(error)
+        }
     }
 
     const handleChange = (e) => setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
@@ -144,7 +144,7 @@ const CommunityPostsComponent = ({ stateChanged }) => {
         try {
             const res = await axios.get("http://localhost:5000/api/community/posts")
             if(res.status === 200) {
-                // setReceivedMessages(res.data.posts)
+                setReceivedMessages(res.data.posts)
             }
         } catch (error) {
             console.error(error)
@@ -160,11 +160,11 @@ const CommunityPostsComponent = ({ stateChanged }) => {
             <div>
                 <ul>
                     {receivedMessages?.map((val,key) => {
-                        // const { category, message, _id } = val
+                        const { category, message, _id } = val
                         return (
                             <li key={key}>
-                                <Link to={`discussions?message=${val}`} className="nav-link text-decoration-underline text-primary fw-bold">
-                                    {val}
+                                <Link to={`discussions?message=${message}`} className="nav-link text-decoration-underline text-primary fw-bold">
+                                  {category}:{message}
                                 </Link>
                             </li>
                         )
