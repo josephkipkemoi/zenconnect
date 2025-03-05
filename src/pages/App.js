@@ -13,7 +13,7 @@ function App() {
   const checkTimeFunc = () => {
       const timer = setTimeout(() => {
         setCheckTime(true)
-      }, 6000)
+      }, 3000)
    
      return () => clearTimeout(timer)
   }
