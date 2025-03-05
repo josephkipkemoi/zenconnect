@@ -81,6 +81,7 @@ const RegisterComponent = () => {
                                     <span className="details">Email</span>
                                     <input className="form-control" onChange={handleChange} type="email" name="email" placeholder="Enter your email" required />
                                 </div>
+                                
                                 <div className="input-box">
                                     <span className="details">Password <small>(Minimum 8 characters)</small></span>
                                     <input className="form-control" onChange={handleChange} type="password" name="password" placeholder="Enter your password" required />
@@ -97,6 +98,7 @@ const RegisterComponent = () => {
                                     <select onChange={handleChange} className="form-control" name="gender">
                                         <option value="male">Male</option>
                                         <option value="female">Female</option>
+                                        <option value="other">Other</option>
                                     </select>
                                 </div>
                             </div>
