@@ -6,7 +6,7 @@ const path = require("path")
 const ConnectDb = require("../server/db/connect")
 
 // Database connection
-ConnectDb()
+// ConnectDb()
 
 app.use(cors())
 app.use(express.json({ extended: false }))
