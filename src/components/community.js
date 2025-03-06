@@ -5,6 +5,8 @@ import { useEffect, useState } from "react"
 import { Button, Card, Container, Modal } from "react-bootstrap"
 import { Link, redirect, useLocation } from "react-router-dom"
 
+const API_URL = process.env.REACT_APP_BACKEND_URL
+
 const CommunityComponent = () => {
     const [successMessage, setSuccessMessage] = useState("")
     const [successModalOpen, setSuccessModalOpen] = useState(false)
@@ -31,7 +33,7 @@ const CommunityComponent = () => {
    
         window.location.href = (`community/discussions?message=${message}`)
         try {
-            const res = await axios.post(`http://localhost:5000/api/community?category=${category}&message=${message}`)
+            const res = await axios.post(`${API_URL}/api/community?category=${category}&message=${message}`)
             if(res.status === 200) {
                 setSuccessMessage(res.data.message)
                 setSuccessModalOpen(true)
@@ -142,7 +144,7 @@ const CommunityPostsComponent = ({ stateChanged }) => {
 
     const fetCommunityPosts = async () => {
         try {
-            const res = await axios.get("http://localhost:5000/api/community/posts")
+            const res = await axios.get(`${API_URL}/api/community/posts`)
             if(res.status === 200) {
                 setReceivedMessages(res.data.posts)
             }
