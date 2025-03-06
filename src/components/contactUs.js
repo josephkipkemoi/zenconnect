@@ -22,7 +22,7 @@ const ContactUsComponent = () => {
 
   const handleMessage = async () => {
     try {
-        const res = await axios.post(`${API_URL}/api/contact?full_name=${full_name}&email=${email}&subject=${subject}&message=${message}`)
+        const res = await axios.post(`${API_URL}/api/contact-us?full_name=${full_name}&email=${email}&subject=${subject}&message=${message}`)
         if (res.status === 200) {
           setSuccessModal(true)
         }
