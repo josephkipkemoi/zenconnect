@@ -3,6 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { Button, Card, Container, Modal } from "react-bootstrap"
 import therapistData from "../data/therapists.json"
 import { useState } from "react"
+import axios from "axios"
+
+const API_URL = process.env.REACT_APP_BACKEND_URL
 
 const TherapistProfileComponent = () => {
     let [openModal, setOpenModal] = useState(false)
@@ -27,23 +30,23 @@ const TherapistProfileComponent = () => {
             {gbv_data.map((data, key) => {
                     const { therapist_name, image_url, description } = data
                     return (
-                        <div key={key} className="d-sm-flex">                      
+                        <div key={key} className="therapist-profile d-sm-flex">                      
                                 <Card className="m-3 shadow-sm">
-                                    <Card.Body>
+                                    <Card.Body className="d-flex flex-column justify-content-between">
                                         <div className="d-flex justify-content-center">
                                             <img className="rounded-5 text-center" src={image_url} alt="doctor"/>
                                         </div>
-                                        <Card.Title>{therapist_name}</Card.Title>
-                                        <hr/>
+                                        <Card.Title>
+                                            {therapist_name}
+                                            <hr/>
+                                        </Card.Title>
                                         <Card.Text>
                                             {description}
                                         </Card.Text>
-                                        <Card.Footer>
-                                            <Button onClick={handleAppointment} variant="primary" className="d-flex align-items-center m-2">
-                                                <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
-                                                Book Appointment
-                                            </Button>
-                                        </Card.Footer>
+                                        <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center">
+                                            <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
+                                            <span >Book Appointment</span>
+                                        </Button>
                                     </Card.Body>
                                 </Card>
                         </div>
@@ -57,26 +60,26 @@ const TherapistProfileComponent = () => {
             {marriage_data.map((data, key) => {
                     const { therapist_name, image_url, description } = data
                     return (
-                        <div key={key} className="d-sm-flex">                      
-                                <Card className="m-3 shadow-sm">
-                                    <Card.Body>
-                                        <div className="d-flex justify-content-center">
-                                            <img className="rounded-5 text-center" src={image_url} alt="doctor"/>
-                                        </div>
-                                        <Card.Title>{therapist_name}</Card.Title>
-                                        <hr/>
-                                        <Card.Text>
-                                            {description}
-                                        </Card.Text>
-                                        <Card.Footer>
-                                            <Button onClick={handleAppointment} variant="primary" className="d-flex align-items-center m-2">
-                                                <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
-                                                Book Appointment
-                                            </Button>
-                                        </Card.Footer>
-                                    </Card.Body>
-                                </Card>
-                        </div>
+                        <div key={key} className="therapist-profile d-sm-flex">                      
+                        <Card className="m-3 shadow-sm">
+                            <Card.Body className="d-flex flex-column justify-content-between">
+                                <div className="d-flex justify-content-center">
+                                    <img className="rounded-5 text-center" src={image_url} alt="doctor"/>
+                                </div>
+                                <Card.Title>
+                                    {therapist_name}
+                                    <hr/>
+                                </Card.Title>
+                                <Card.Text>
+                                    {description}
+                                </Card.Text>
+                                <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center">
+                                    <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
+                                    <span >Book Appointment</span>
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                </div>
                     )
                 })}
         </div>
@@ -87,23 +90,23 @@ const TherapistProfileComponent = () => {
             {youth_data.map((data, key) => {
                     const { therapist_name, image_url, description } = data
                     return (
-                        <div key={key} className="d-sm-flex">                      
+                        <div key={key} className="therapist-profile d-sm-flex">                      
                                 <Card className="m-3 shadow-sm">
-                                    <Card.Body>
+                                    <Card.Body className="d-flex flex-column justify-content-between">
                                         <div className="d-flex justify-content-center">
                                             <img className="rounded-5 text-center" src={image_url} alt="doctor"/>
                                         </div>
-                                        <Card.Title>{therapist_name}</Card.Title>
-                                        <hr/>
+                                        <Card.Title>
+                                            {therapist_name}
+                                            <hr/>
+                                        </Card.Title>
                                         <Card.Text>
                                             {description}
                                         </Card.Text>
-                                        <Card.Footer>
-                                            <Button variant="primary" onClick={handleAppointment} className="d-flex align-items-center m-2">
-                                                <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
-                                                Book Appointment
-                                            </Button>
-                                        </Card.Footer>
+                                        <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center">
+                                            <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
+                                            <span >Book Appointment</span>
+                                        </Button>
                                     </Card.Body>
                                 </Card>
                         </div>
@@ -117,10 +120,34 @@ const TherapistProfileComponent = () => {
 }
 
 const ModalContainer = ({ openModal, setOpenModal }) => {
+    const [errs, setErrs] = useState([])
+    const [formData, setFormData] = useState({
+        full_name: "",
+        phone_number: "",
+        date_available: ""
+    })
 
-    const handleSubmit = () => {
-        alert("A therapist will reach out to you as soon as possible")
-        setOpenModal(false)
+    const { full_name, phone_number, date_available } = formData
+
+    const handleSubmit = async () => {
+        try {
+            const res = await axios(`${API_URL}/api/bookTherapy?full_name=${full_name}&phone_number=${phone_number}&date_availeble=${date_available}`)
+            if(res.status === 200) {
+                alert("A therapist will reach out to you as soon as possible")
+                setOpenModal(false)
+            }
+        } catch (error) {
+            const { message, status } = error.toJSON()
+            if(status === 400) {
+                error.response.data.errors?.map(el => setErrs([el.msg]))
+                return
+            }
+            setErrs([message])
+        }
+    }
+
+    const handleChange = (e) => {
+        setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
     }
 
     return (
@@ -128,17 +155,18 @@ const ModalContainer = ({ openModal, setOpenModal }) => {
             <Modal.Body>
                 <Modal.Header>Please fill form to book an appointment</Modal.Header>
                 <Modal.Body>
+                    {errs.length > 0 && errs.map((val, key) => <span className="d-block alert alert-danger mt-3 mb-3" key={key} >{val}</span>)}
                     <div className="mb-3"> 
                         <label htmlFor="full_name" className="mb-3">Full name: </label>
-                        <input id="full_name" className="form-control" placeholder="Please enter your full name" />
+                        <input id="full_name" name="full_name" onChange={handleChange} className="form-control" placeholder="Please enter your full name" />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="phone_number" className="mb-3">Phone number: </label>
-                        <input id="phone_number" className="form-control" placeholder="Please enter your phone number" />
+                        <input id="phone_number" name="phone_number" onChange={handleChange} className="form-control" placeholder="Please enter your phone number" />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="date" className="mb-3">Date available: </label>
-                        <input id="date" className="form-control" type="date" />
+                        <input id="date" onChange={handleChange} name="date_available" className="form-control" type="date" />
                     </div>
                     <div className="d-flex justify-content-center">
                         <Button variant="dark" className="w-100 m-2 text-center" onClick={handleSubmit}>
