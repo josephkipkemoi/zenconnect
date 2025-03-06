@@ -5,6 +5,8 @@ import { Button, FloatingLabel, Form } from "react-bootstrap"
 import { useEffect, useState } from "react"
 import axios from "axios"
 
+import URL_PORT from "../lib/port"
+
 const ChatBox = () => {
     let [message, setMessage] = useState({
         messageItem: '',
@@ -17,12 +19,20 @@ const ChatBox = () => {
 
     let [displayResponse, setDisplayResponse] = useState("")
 
-    // Outbound message 1
+    // Outbound messages 
     const [outBound1, setOutBound1] = useState('')
     const [outBound2, setOutBound2] = useState('')
-    
-    // inbound message 1
+    const [outBound3, setOutBound3] = useState('')
+    const [outBound4, setOutBound4] = useState('')
+    const [outBound5, setOutBound5] = useState('')
+
+    // inbound messages
     const [inbound1, setInbound1] = useState("")
+    const [inbound2, setInbound2] = useState("")
+    const [inbound3, setInbound3] = useState("")
+    const [inbound4, setInbound4] = useState("")
+    const [inbound5, setInbound5] = useState("")
+
 
     const handleMessage = (e) => {
        setMessage((prev) => ({...prev, messageItem: e.target.value, messageCounter: counter}))
@@ -32,18 +42,64 @@ const ChatBox = () => {
         sessionStorage.setItem(`out-bound-${counter}`, JSON.stringify(message))
         setCounter(prev => prev+=1)
 
-        const { messageItem } = JSON.parse(sessionStorage.getItem("out-bound-0"))
         const ageGroup = sessionStorage.getItem("age-group")
         const preffLang = sessionStorage.getItem("preff-lang")
 
-        try {
-            const res = await axios.get(`http://localhost:5000/api/chatbot?message=${messageItem}&age_group=${ageGroup}&preff_lang=${preffLang}`)
-            if(res.status === 200) {
-                setInbound1(res.data.message)
-            }
-        } catch (error) {
-            console.error(error)
-        }     
+        setMessage((prev) =>({...prev, messageItem: ""}))
+
+        const { messageItem } = JSON.parse(sessionStorage.getItem(`out-bound-${counter}`))
+        switch(counter) {
+            case 0:
+                try {
+                        const res = await axios.get(`${URL_PORT}/api/chatbot?message=${messageItem}&age_group=${ageGroup}&preff_lang=${preffLang}`)
+                        if(res.status === 200) {
+                            setInbound1(res.data.message)
+                        }          
+                    } catch (error) {
+                        console.error(error)
+                    }   
+                break
+            case 1:
+                try {
+                        const res = await axios.get(`${URL_PORT}/api/chatbot?message=${messageItem}&age_group=${ageGroup}&preff_lang=${preffLang}`)
+                        if(res.status === 200) {
+                            setInbound2(res.data.message)
+                        }          
+                    } catch (error) {
+                        console.error(error)
+                    }   
+                break 
+            case 2:
+                try {
+                    const res = await axios.get(`${URL_PORT}/api/chatbot?message=${messageItem}&age_group=${ageGroup}&preff_lang=${preffLang}`)
+                    if(res.status === 200) {
+                        setInbound3(res.data.message)
+                    }          
+                } catch (error) {
+                    console.error(error)
+                }   
+                break 
+            case 3:
+                try {
+                    const res = await axios.get(`${URL_PORT}/api/chatbot?message=${messageItem}&age_group=${ageGroup}&preff_lang=${preffLang}`)
+                    if(res.status === 200) {
+                        setInbound4(res.data.message)
+                    }          
+                } catch (error) {
+                    console.error(error)
+                }   
+                break 
+            case 4:
+                try {
+                    const res = await axios.get(`${URL_PORT}/api/chatbot?message=${messageItem}&age_group=${ageGroup}&preff_lang=${preffLang}`)
+                    if(res.status === 200) {
+                        setInbound5(res.data.message)
+                    }          
+                } catch (error) {
+                    console.error(error)
+                }   
+                break 
+        } 
     }
 
     const displayTypingMessage = (chat) => {
@@ -70,6 +126,12 @@ const ChatBox = () => {
         setOutBound1(msg)
         const msg2 = sessionStorage.getItem("out-bound-1")
         setOutBound2(msg2)
+        const msg3 = sessionStorage.getItem("out-bound-2")
+        setOutBound3(msg3)
+        const msg4 = sessionStorage.getItem("out-bound-3")
+        setOutBound4(msg4)
+        const msg5 = sessionStorage.getItem("out-bound-5")
+        setOutBound5(msg5)
     }
 
     useEffect(() => {
@@ -108,8 +170,19 @@ const ChatBox = () => {
                 
                 {outBound1 && <OutBoundComponent message={outBound1}/> }
                 {outBound1 && inbound1 && <InBoundComponent message={inbound1}/> }
+
                 {outBound2 && <OutBound2Component message={outBound2}/>}
-                {outBound2 &&  <InBound2Component/> }
+                {outBound2 && inbound2 && <InBound2Component message={inbound2}/> }
+
+                {outBound3 && <OutBound3Component message={outBound3}/>}
+                {outBound3 && inbound3 && <InBound3Component message={inbound3}/> }
+
+                {outBound4 && <OutBound4Component message={outBound4}/>}
+                {outBound4 && inbound4 && <InBound4Component message={inbound4}/> }
+
+                {outBound5 && <OutBound5Component message={outBound5}/>}
+                {outBound5 && inbound5 && <InBound5Component message={inbound5}/> }
+
 
             </div>
             <div className="row m-3 align-items-center mx-auto w-75">
@@ -121,6 +194,7 @@ const ChatBox = () => {
                             style={{ height: '100px' }}
                             className="bg-light text-dark"
                             onChange={handleMessage}
+                            value={message.messageItem}
                         />
                     </FloatingLabel>
                 </div>
@@ -151,6 +225,51 @@ const OutBoundComponent = ({ message }) => {
     )
 }
 const OutBound2Component = ({ message }) => {
+    const { messageItem } = JSON.parse(message)
+    return (
+        <div className="d-flex justify-content-end w-100">    
+            <div>           
+              <div className="d-flex w-100 ">
+                    <div className="bg-secondary shadow text-white p-3 rounded-4 m-1">
+                        <span className="d-block">{messageItem}</span>
+                    </div>
+                    <FontAwesomeIcon size="xl" className="bg-secondary p-2 m-3 rounded-5 text-light" icon={faUserCircle}/>
+                </div>
+            </div>
+        </div>
+    )
+}
+const OutBound3Component = ({ message }) => {
+    const { messageItem } = JSON.parse(message)
+    return (
+        <div className="d-flex justify-content-end w-100">    
+            <div>           
+              <div className="d-flex w-100 ">
+                    <div className="bg-secondary shadow text-white p-3 rounded-4 m-1">
+                        <span className="d-block">{messageItem}</span>
+                    </div>
+                    <FontAwesomeIcon size="xl" className="bg-secondary p-2 m-3 rounded-5 text-light" icon={faUserCircle}/>
+                </div>
+            </div>
+        </div>
+    )
+}
+const OutBound4Component = ({ message }) => {
+    const { messageItem } = JSON.parse(message)
+    return (
+        <div className="d-flex justify-content-end w-100">    
+            <div>           
+              <div className="d-flex w-100 ">
+                    <div className="bg-secondary shadow text-white p-3 rounded-4 m-1">
+                        <span className="d-block">{messageItem}</span>
+                    </div>
+                    <FontAwesomeIcon size="xl" className="bg-secondary p-2 m-3 rounded-5 text-light" icon={faUserCircle}/>
+                </div>
+            </div>
+        </div>
+    )
+}
+const OutBound5Component = ({ message }) => {
     const { messageItem } = JSON.parse(message)
     return (
         <div className="d-flex justify-content-end w-100">    
@@ -214,49 +333,9 @@ const InBoundComponent = ({ message }) => {
         </div>
     )
 }
-const InBound2Component = () => {
+const InBound2Component = ({ message }) => {
     let [displayResponse, setDisplayResponse] = useState("")
     let [completedTyping, setCompletedTyping] = useState(false)
-
-    const chatHistory = `
-Burnout can creep in when you're overwhelmed, stressed, or overworked for long periods. To avoid it, try these strategies:
-
-1. Prioritize Self-Care
-Take care of your body and mind. Get enough sleep, eat well, stay hydrated, and exercise regularly. Engage in activities that relax you, such as meditation, reading, or listening to music.
-
-2. Set Boundaries
-Learn to say no to excessive work and set clear limits on your availability. Avoid taking on more than you can handle, and ensure you have time to recharge.
-
-3. Manage Your Time Wisely
-Use productivity tools like ClickUp, Trello, or Notion to organize tasks. Break large projects into smaller, manageable tasks and avoid multitasking, which can reduce efficiency and increase stress.
-
-4. Take Breaks
-Working continuously without breaks leads to exhaustion. Follow techniques like the Pomodoro Technique—work for 25 minutes, then take a 5-minute break. Step away from screens, stretch, or take deep breaths.
-
-5. Engage in Activities You Enjoy
-Pursue hobbies outside of work or studies. Whether it's painting, coding for fun, or playing sports, engaging in non-work activities boosts creativity and reduces stress.
-
-6. Seek Support
-Talk to friends, family, or a mentor about your challenges. If stress becomes overwhelming, consider professional counseling or therapy.
-
-7. Maintain Work-Life Balance
-Avoid letting work consume your personal life. Set specific work hours and unplug from work emails or messages after hours.
-
-8. Adjust Your Mindset
-Perfectionism can contribute to burnout. Accept that mistakes happen and focus on progress rather than perfection.
-
-By incorporating these strategies, you can stay productive while maintaining your mental well-being.`
-
-    const sendMessage = async () => {
-        const msg = JSON.parse(sessionStorage.getItem("out-bound-0"))
-         try {
-            const res = await axios.post("http://localhost:5000/api/chatbot", {
-                message: msg
-            })
-        } catch (error) {
-            console.error(error)
-        }
-    }
 
     const displayTypingMessage = async (chat) => {
         const msg = JSON.parse(sessionStorage.getItem("out-bound-0"))
@@ -278,7 +357,151 @@ By incorporating these strategies, you can stay productive while maintaining you
     }
 
     useEffect(() => {
-        displayTypingMessage(chatHistory)
+        displayTypingMessage(message)
+    }, [])
+    return (
+        <div className="d-flex p-3 align-items-start rounded-5">
+            <div>
+                <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
+            </div>
+            <div className="bg-light p-2 rounded-4 m-1 shadow">
+                <p className="p-3">
+                    {displayResponse}
+                    {!completedTyping &&
+                    <svg
+                        viewBox="8 4 8 16"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="cursor"
+                    >
+                        <rect x="10" y="6" width="4" height="12" fill="#fff" />
+                    </svg>
+                    }                           
+                </p>
+            </div>
+        </div>
+    )
+}
+const InBound3Component = ({ message }) => {
+    let [displayResponse, setDisplayResponse] = useState("")
+    let [completedTyping, setCompletedTyping] = useState(false)
+
+    const displayTypingMessage = async (chat) => {
+        const msg = JSON.parse(sessionStorage.getItem("out-bound-0"))
+      
+        let i = 0
+        const interValid = setInterval(() => {
+            setDisplayResponse(chat.slice(0, i))
+
+            i++;
+        
+            if (i > chat.length) {
+              clearInterval(interValid)
+              setCompletedTyping(true)
+              sessionStorage.setItem("typing_1_complete", true)
+            }            
+        },30)
+
+        return () => clearInterval(interValid)
+    }
+
+    useEffect(() => {
+        displayTypingMessage(message)
+    }, [])
+    return (
+        <div className="d-flex p-3 align-items-start rounded-5">
+            <div>
+                <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
+            </div>
+            <div className="bg-light p-2 rounded-4 m-1 shadow">
+                <p className="p-3">
+                    {displayResponse}
+                    {!completedTyping &&
+                    <svg
+                        viewBox="8 4 8 16"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="cursor"
+                    >
+                        <rect x="10" y="6" width="4" height="12" fill="#fff" />
+                    </svg>
+                    }                           
+                </p>
+            </div>
+        </div>
+    )
+}
+const InBound4Component = ({ message }) => {
+    let [displayResponse, setDisplayResponse] = useState("")
+    let [completedTyping, setCompletedTyping] = useState(false)
+
+    const displayTypingMessage = async (chat) => {
+        const msg = JSON.parse(sessionStorage.getItem("out-bound-0"))
+      
+        let i = 0
+        const interValid = setInterval(() => {
+            setDisplayResponse(chat.slice(0, i))
+
+            i++;
+        
+            if (i > chat.length) {
+              clearInterval(interValid)
+              setCompletedTyping(true)
+              sessionStorage.setItem("typing_1_complete", true)
+            }            
+        },30)
+
+        return () => clearInterval(interValid)
+    }
+
+    useEffect(() => {
+        displayTypingMessage(message)
+    }, [])
+    return (
+        <div className="d-flex p-3 align-items-start rounded-5">
+            <div>
+                <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
+            </div>
+            <div className="bg-light p-2 rounded-4 m-1 shadow">
+                <p className="p-3">
+                    {displayResponse}
+                    {!completedTyping &&
+                    <svg
+                        viewBox="8 4 8 16"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="cursor"
+                    >
+                        <rect x="10" y="6" width="4" height="12" fill="#fff" />
+                    </svg>
+                    }                           
+                </p>
+            </div>
+        </div>
+    )
+}
+const InBound5Component = ({ message }) => {
+    let [displayResponse, setDisplayResponse] = useState("")
+    let [completedTyping, setCompletedTyping] = useState(false)
+
+    const displayTypingMessage = async (chat) => {
+        const msg = JSON.parse(sessionStorage.getItem("out-bound-0"))
+      
+        let i = 0
+        const interValid = setInterval(() => {
+            setDisplayResponse(chat.slice(0, i))
+
+            i++;
+        
+            if (i > chat.length) {
+              clearInterval(interValid)
+              setCompletedTyping(true)
+              sessionStorage.setItem("typing_1_complete", true)
+            }            
+        },30)
+
+        return () => clearInterval(interValid)
+    }
+
+    useEffect(() => {
+        displayTypingMessage(message)
     }, [])
     return (
         <div className="d-flex p-3 align-items-start rounded-5">
