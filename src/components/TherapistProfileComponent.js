@@ -131,7 +131,7 @@ const ModalContainer = ({ openModal, setOpenModal }) => {
 
     const handleSubmit = async () => {
         try {
-            const res = await axios(`${API_URL}/api/bookTherapy?full_name=${full_name}&phone_number=${phone_number}&date_availeble=${date_available}`)
+            const res = await axios.post(`${API_URL}/api/bookTherapy?full_name=${full_name}&phone_number=${phone_number}&date_availeble=${date_available}`)
             if(res.status === 200) {
                 alert("A therapist will reach out to you as soon as possible")
                 setOpenModal(false)
