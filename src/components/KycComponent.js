@@ -92,7 +92,6 @@ const StepTwoComponent = ({ setActive }) => {
                     <option value="luhya">Luhya</option>
                     <option value="kamba">Kamba</option>
                     <option value="dholuo">Luo</option>
-                    <option value="gujarati">Gujarati</option>
                     <option value="maasai">Maasai</option>
                     <option value="somali">Somali</option>
                 </select>

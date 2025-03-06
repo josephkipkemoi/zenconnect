@@ -42,3 +42,10 @@ h1,h2,h3,h4,h5,h6 {
       opacity: 0;
     }
 }
+.language-component {
+    /* position: absolute; */
+    right: 0;
+    width: 320px;
+    float: right;
+    text-align: center;
+}

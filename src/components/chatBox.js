@@ -144,7 +144,10 @@ const ChatBox = () => {
 
     return (
         <div className="container chat-box-container d-flex flex-column justify-content-between bg-none rounded-4">
-            <div className="d-flex flex-column justify-content-start align-items-start chat-box-child">
+          
+            <div className="d-flex flex-column justify-content-start align-items-start chat-box-child w-100">
+            <LanguageComponent/>
+
                 {!!displayResponse &&
                     <div className="d-flex p-3 align-items-start rounded-5">
                       <div>
@@ -209,6 +212,31 @@ const ChatBox = () => {
     )
 }
 
+const LanguageComponent = () => {
+
+    const handleCheck = (e) => {
+       sessionStorage.setItem("preff-lang",e.target.value)
+    }
+  
+    return (
+      <div className="container language-component">
+        <div className=''>
+            <label><small>Switch language:</small></label>
+              <select onChange={handleCheck} className="form-select">
+                  <option value="english">English</option>
+                  <option value="swahili">Swahili</option>
+                  <option value="kikuyu">Kikuyu</option>
+                  <option value="luhya">Luhya</option>
+                  <option value="kamba">Kamba</option>
+                  <option value="dholuo">Luo</option>
+                  <option value="maasai">Maasai</option>
+                  <option value="somali">Somali</option>
+            </select>
+        </div>      
+      </div>
+    )
+  }
+  
 const OutBoundComponent = ({ message }) => {
     const { messageItem } = JSON.parse(message)
     return (
