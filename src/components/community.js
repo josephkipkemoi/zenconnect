@@ -45,6 +45,10 @@ const CommunityComponent = () => {
 
     const handleChange = (e) => setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
 
+    const handleLang = (e) => {
+        sessionStorage.setItem("preff-lang", e.target.value)
+    }
+
     return (
         <Container>
             <Card className="border-0  community-chat">
@@ -60,10 +64,28 @@ const CommunityComponent = () => {
                                         Please fill form to post question.  
                                         <small>(This will help those battling similar conditions get quick assistance)</small>
                                     </label>
-                                    <label>Choose one category you may be suffering from:</label>
-                                    <select name="category" onChange={handleChange} className="p-3 d-block m-2 border-0">
-                                        {categories?.map((val, key) => <option key={key} value={val}>{val}</option>)}
-                                    </select>
+                                    <div className="d-sm-flex justify-content-between">
+                                        <div className="w-100 m-1">
+                                            <label className="mb-2">Choose one:</label>
+                                            <select name="category" onChange={handleChange} className="p-3 d-block form-select bg-light border-0 w-100 rounded">
+                                                {categories?.map((val, key) => <option key={key} value={val}>{val}</option>)}
+                                            </select>
+                                        </div>
+                                        <div className="w-100 m-1">
+                                            <label className="mb-2">Swtich language:</label>
+                                            <select name="category" onChange={handleLang} className="p-3 d-block form-select bg-light border-0 w-100 rounded">
+                                                <option value="english">English</option>
+                                                <option value="swahili">Swahili</option>
+                                                <option value="kikuyu">Kikuyu</option>
+                                                <option value="luhya">Luhya</option>
+                                                <option value="kamba">Kamba</option>
+                                                <option value="luo">Luo</option>
+                                                <option value="maasai">Maasai</option>
+                                                <option value="somali">Somali</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
                                 </div>
                                 <div className="mt-3">
                                     <label htmlFor="community_chat_id mb-5 d-block">Type your message below:</label>
