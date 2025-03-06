@@ -3,6 +3,8 @@ import { useEffect, useState } from "react"
 import { Card, Container } from "react-bootstrap"
 import { useSearchParams } from "react-router-dom"
 
+const API_URL = process.env.REACT_APP_BACKEND_URL
+
 const DiscussionsComponent = () => {
     const [searchParams,] = useSearchParams()
     const message = searchParams.get("message")
@@ -33,7 +35,7 @@ const DiscussionsComponent = () => {
         const ageGroup = sessionStorage.getItem("age-group")
         const preffLang = sessionStorage.getItem("preff-lang")
         try {
-            const res = await axios.get(`http://localhost:5000/api/chatbot?message=${msg}&age_group=${ageGroup}&preff_lang=${preffLang}`)
+            const res = await axios.get(`${API_URL}/api/chatbot?message=${msg}&age_group=${ageGroup}&preff_lang=${preffLang}`)
             if(res.status === 200) {
                 setDiscussionMessage(res.data.message)
             }
