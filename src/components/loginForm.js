@@ -2,6 +2,8 @@ import axios from "axios"
 import { useState } from "react"
 import { Container, Form } from "react-bootstrap"
 
+const API_URL = process.env.REACT_APP_BACKEND_URL
+
 const LogInFormComponent = () => {
     let [errs, setErrs] = useState([])
 
@@ -20,7 +22,7 @@ const LogInFormComponent = () => {
         no[0] = "254"
         let phone_number = no.join("")
         try {
-            const res = await axios.post("http://localhost:5000/api/users/login", {
+            const res = await axios.post(`${API_URL}/api/users/login`, {
                 phone_number,
                 password,
                 rememberMe
