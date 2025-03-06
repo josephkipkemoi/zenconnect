@@ -9,6 +9,7 @@ import EshaPP from "../images/esha_pp.png"
 import NatashaPP from "../images/natasha_pp.png"
 import SalehPP from "../images/saleh_pp.png"
 import JanetPP from "../images/janet_pp.png"
+import AkshayPP from "../images/akshay_pp.png"
 
 const AboutUsComponent = () => {
     return (
@@ -143,7 +144,7 @@ const AboutUsComponent = () => {
                             <h6 className="fw-bold">Tilak Patel</h6>
                             <p>Business Analyst</p>
                             <p>
-                               Tilak is a Business Analyst...
+                               Tilak is a Business Analyst and a Full-Stack Developer
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
@@ -158,10 +159,10 @@ const AboutUsComponent = () => {
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
                             <img src={SalehPP} alt="saleh_hassan" className="img-fluid rounded shadow-sm"/>
-                            <h6 className="fw-bold mt-3">Saleh Hassan</h6>
+                            <h6 className="fw-bold mt-3">Saleh Mohammed</h6>
                             <p>Project Manager</p>
                             <p>
-                               Saleh is the Project Manager...
+                               Saleh is the Project Manager, Full-Stack Developer and an aspiring Blockchain Developer
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
@@ -175,11 +176,11 @@ const AboutUsComponent = () => {
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="akshay_shah" className="img-fluid"/>
+                            <img src={AkshayPP} alt="akshay_shah" className="img-fluid"/>
                             <h6 className="fw-bold">Akshay Shah</h6>
                             <p>UI/UX Designer</p>
                             <p>
-                               Akshay is a UI/UX Designer...
+                               Akshay is a UI/UX Designer
                             </p>
                         </Card.Body>
                         <Card.Footer className="border-0 d-flex">
