@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
 import { Button, Container, Nav, Navbar } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import "./header.css"
 
 const HeaderComponent = () => {
     let [isAuth, setIsAuth] = useState(false)

@@ -10,6 +10,7 @@ import NatashaPP from "../images/natasha_pp.png"
 import SalehPP from "../images/saleh_pp.png"
 import JanetPP from "../images/janet_pp.png"
 import AkshayPP from "../images/akshay_pp.png"
+import TilakPP from "../images/tilak_pp.png"
 
 const AboutUsComponent = () => {
     return (
@@ -140,8 +141,8 @@ const AboutUsComponent = () => {
                     </Card>
                     <Card className="col-sm-3 m-2 shadow border-0 p-2">
                         <Card.Body>
-                            <img src="" alt="tilak_patel" className="img-fluid"/>
-                            <h6 className="fw-bold">Tilak Patel</h6>
+                            <img src={TilakPP} alt="tilak_patel" className="img-fluid rounded"/>
+                            <h6 className="fw-bold mt-3">Tilak Patel</h6>
                             <p>Business Analyst</p>
                             <p>
                                Tilak is a Business Analyst and a Full-Stack Developer

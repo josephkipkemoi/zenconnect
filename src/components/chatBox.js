@@ -143,72 +143,68 @@ const ChatBox = () => {
     }, [counter])
 
     return (
-        <div className="container chat-box-container d-flex flex-column justify-content-between bg-none rounded-4">
+        <div>
+             <div className="container chat-box-container d-flex flex-column justify-content-between bg-none rounded-4">
           
-            <div className="d-flex flex-column justify-content-start align-items-start chat-box-child w-100">
-            <LanguageComponent/>
+          <div className="d-flex flex-column justify-content-start align-items-start chat-box-child w-100">
+          <LanguageComponent/>
 
-                {!!displayResponse &&
-                    <div className="d-flex p-3 align-items-start rounded-5">
-                      <div>
-                          <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
-                      </div>
-                     
-                      <div className="bg-light p-2 rounded-4 m-1 shadow">
-                          <p className="p-3">
-                              {displayResponse}
-                              {!completedTyping &&
-                               <svg
-                                  viewBox="8 4 8 16"
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  className="cursor"
-                              >
-                                  <rect x="10" y="6" width="4" height="12" fill="#fff" />
-                              </svg>
-                              }                           
-                          </p>
-                      </div>
+              {!!displayResponse &&
+                  <div className="d-flex p-3 align-items-start rounded-5">
+                    <div>
+                        <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
                     </div>
-                }
-                
-                {outBound1 && <OutBoundComponent message={outBound1}/> }
-                {outBound1 && inbound1 && <InBoundComponent message={inbound1}/> }
+                   
+                    <div className="bg-light p-2 rounded-4 m-1 shadow-sm">
+                        <p className="p-3">
+                            {displayResponse}
+                            {!completedTyping &&
+                             <svg
+                                viewBox="8 4 8 16"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="cursor"
+                            >
+                                <rect x="10" y="6" width="4" height="12" fill="#fff" />
+                            </svg>
+                            }                           
+                        </p>
+                    </div>
+                  </div>
+              }
+              
+              {outBound1 && <OutBoundComponent message={outBound1}/> }
+              {outBound1 && inbound1 && <InBoundComponent message={inbound1}/> }
 
-                {outBound2 && <OutBound2Component message={outBound2}/>}
-                {outBound2 && inbound2 && <InBound2Component message={inbound2}/> }
+              {outBound2 && <OutBound2Component message={outBound2}/>}
+              {outBound2 && inbound2 && <InBound2Component message={inbound2}/> }
 
-                {outBound3 && <OutBound3Component message={outBound3}/>}
-                {outBound3 && inbound3 && <InBound3Component message={inbound3}/> }
+              {outBound3 && <OutBound3Component message={outBound3}/>}
+              {outBound3 && inbound3 && <InBound3Component message={inbound3}/> }
 
-                {outBound4 && <OutBound4Component message={outBound4}/>}
-                {outBound4 && inbound4 && <InBound4Component message={inbound4}/> }
+              {outBound4 && <OutBound4Component message={outBound4}/>}
+              {outBound4 && inbound4 && <InBound4Component message={inbound4}/> }
 
-                {outBound5 && <OutBound5Component message={outBound5}/>}
-                {outBound5 && inbound5 && <InBound5Component message={inbound5}/> }
+              {outBound5 && <OutBound5Component message={outBound5}/>}
+              {outBound5 && inbound5 && <InBound5Component message={inbound5}/> }
 
 
-            </div>
-            <div className="row m-3 align-items-center mx-auto w-75">
-                <div className="col-sm-8">
-                    <FloatingLabel className="w-100 text-secondary" controlId="floatingTextarea2" label="How are you feeling today?">
-                        <Form.Control
-                            as="textarea"
-                            placeholder="Leave a comment here"
-                            style={{ height: '100px' }}
-                            className="bg-light text-dark"
-                            onChange={handleMessage}
-                            value={message.messageItem}
-                        />
-                    </FloatingLabel>
-                </div>
-                <div className="col-sm-3 m-2">
-                    <Button onClick={postMessage} variant="success" size="md" className="shadow-sm fw-bold rounded-5">
-                        <FontAwesomeIcon icon={faBrain} className="text-light"/>
-                        <span className="m-1 text-light">Get Help</span> 
-                    </Button>  
-                </div>
-            </div>
-        </div>
+          </div>
+          <div className="row align-items-center justify-content-center chat-box-message m-2">
+                    <Form.Control
+                        as="textarea"
+                        placeholder="What can I help you with today?"
+                        style={{ height: '180px' }}
+                        className="bg-none text-dark shadow-sm p-3 w-100"
+                        onChange={handleMessage}
+                        value={message.messageItem}
+                    />
+                  <Button onClick={postMessage} className="col-sm-3 d-flex align-items-center justify-content-center submit-btn  shadow mt-4 fw-bold rounded-5 p-2">
+                      <FontAwesomeIcon icon={faBrain} className="text-light brain-icon"/>
+                      <span className="m-1 text-dark">Get Help</span> 
+                  </Button>  
+          </div>
+      </div>
+    </div>
     )
 }
 

@@ -21,7 +21,7 @@ const KycComponent = ({ checkTime }) => {
 
     return (
         <Modal show={active} centered>
-            <Modal.Header className="d-flex justify-content-center bg-success text-white">
+            <Modal.Header className="d-flex justify-content-center bg-info text-dark fw-bold">
                 <h3>
                     Quick one!
                 </h3>
@@ -42,7 +42,7 @@ const StepOneComponent = ({ setStep }) => {
         setStep(2)
     }
     return (
-        <div>
+        <div className="rounded-5">
                 <p><em>Please state your age-group to get personalized help.</em></p>
                 <div className="d-flex align-content-center">
                     <Form.Check id="age-group-1" onChange={handleCheck}  value="13-19" className="m-2"></Form.Check>
@@ -85,7 +85,7 @@ const StepTwoComponent = ({ setActive }) => {
         <div>
             <p className="mb-3"><em>Please choose preferred language.</em></p>
             {errs.length > 0 && errs.map((val, key) => <small className="d-flex shadow-sm justify-content-center alert alert-info mb-2" key={key} >{val}</small>)}
-                <select onChange={handleCheck} className="form-select">
+                <select onChange={handleCheck} className="form-select rounded-5 p-3">
                     <option value="english">English</option>
                     <option value="swahili">Swahili</option>
                     <option value="kikuyu">Kikuyu</option>
@@ -96,7 +96,7 @@ const StepTwoComponent = ({ setActive }) => {
                     <option value="somali">Somali</option>
                 </select>
                 <div className="d-flex justify-content-center mt-3">
-                    <Button className="mt-2 shadow" variant="primary" onClick={submitForm} >
+                    <Button className="mt-2 shadow rounded-5" variant="primary" onClick={submitForm} >
                         <FontAwesomeIcon icon={faArrowAltCircleRight}  />
                         <span className="m-2">Submit</span>                    
                     </Button>

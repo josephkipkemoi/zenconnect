@@ -43,11 +43,18 @@ h1,h2,h3,h4,h5,h6 {
     }
 }
 .language-component {
-    /* position: absolute; */
-    right: 0;
+     display: flex;
+     justify-content: end;
+    text-align:right;
+    padding: 12px;
+}
+.language-component select {
+    margin-top: 10px;
+    background-color: #b5d3fc;
+    border: 3px solid whitesmoke;
     width: 320px;
-    float: right;
-    text-align: center;
+    border-radius: 12px;
+    font-weight: 500;
 }
 .therapist-profile {
     min-width: 320px;
