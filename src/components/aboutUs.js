@@ -1,6 +1,6 @@
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { Button, Card } from "react-bootstrap"
+import { Button, Card, Container } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 import AnshPP from "../images/ansh_pp.png"
@@ -14,9 +14,10 @@ import TilakPP from "../images/tilak_pp.png"
 
 const AboutUsComponent = () => {
     return (
-        <Card className="border-0 shadow about-us-page">
-            <Card.Header className="bg-success text-white p-3 shadow-sm border-0">
-                <h2>About Us</h2>
+        <Container>
+        <Card className="border-0 shadow about-us-page rounded-5">
+            <Card.Header className="bg-info fw-bold text-white p-4 rounded-5 m-3 shadow border-0">
+                <h2 className="fw-bold">About Us</h2>
             </Card.Header>
             <Card.Body className="p-4">
                 <h5 className="fw-bold mb-3">What is ZenConnect?</h5>
@@ -236,6 +237,7 @@ const AboutUsComponent = () => {
                 <Link className="nav-link text-primary fw-bold mb-4" to="/contact-us">Contact Us</Link>
             </Card.Body>
         </Card>
+        </Container>
     )
 }
 
