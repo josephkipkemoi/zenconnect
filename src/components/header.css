@@ -1,0 +1,14 @@
+
+header img {
+    width: 144px;
+    margin-left: 32px;
+}
+nav {
+    width: 100vw;
+    margin-top: 0px;
+}
+.nav-link-custom {
+    border-radius: 18px;
+    margin-right: 18px;
+    margin-left: 12px;
+}
