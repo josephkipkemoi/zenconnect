@@ -66,13 +66,13 @@ const HeaderComponent = () => {
                 </Navbar>
             </nav>
             <div className="d-flex justify-content-end m-3">
-                { !isAuth ? 
+                {/* { !isAuth ? 
                     <>    
                         <Link className="text-right nav-link btn m-1" to="/login">Login</Link>
                         <Link className="text-right nav-link btn m-1" to="/register">Register</Link>
                     </> :
                     <Button variant="dark" onClick={handleLogout}>Logout</Button>}
-          
+           */}
             </div>
         </header>
     )
