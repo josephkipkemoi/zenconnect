@@ -3,12 +3,13 @@ import { Accordion, Card, Container, InputGroup } from "react-bootstrap"
 const ResourcesComponent = () => {
     return (
         <Container className="resources-page">
-          <Card.Header className=" border-0 p-3 w-100 m-1 bg-success text-white rounded" >
-                <h3>Free Resources</h3>
-            </Card.Header>
-            <Card>              
+        
+            <Card className="border-0 shadow rounded-5">        
+                <Card.Header className="border-0 p-4 m-3 shadow bg-info text-white rounded-5" >
+                    <h2 className="fw-bold">Free Resources</h2>
+                </Card.Header>       
                 <Card.Body>
-                    <Accordion defaultActiveKey="0">
+                    <Accordion defaultActiveKey="0" className="p-2">
                         <Accordion.Item eventKey="0">
                             <Accordion.Header>
                                 <h5 className="fw-bold">Depression</h5>                                
