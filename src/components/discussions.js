@@ -51,10 +51,10 @@ const DiscussionsComponent = () => {
         fetchDiscussions(message)
     }, [message, !!discussionMessage])
     return (
-        <Container>
-            <Card>
-                <Card.Header className="p-3 bg-secondary text-white">
-                    <h4>Discussions</h4>
+        <Container className="discussions-page">
+            <Card className="rounded-5 border-0 shadow">
+                <Card.Header className="p-3 bg-info rounded-5 shadow m-3 border-0 text-white">
+                    <h2 className="fw-bold m-1">Discussions</h2>
                 </Card.Header>
                 <Card.Body>
                     <h5 className="mt-1">{message}</h5>
