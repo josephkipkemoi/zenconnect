@@ -86,6 +86,7 @@ const StepTwoComponent = ({ setActive }) => {
             <p className="mb-3"><em>Please choose preferred language.</em></p>
             {errs.length > 0 && errs.map((val, key) => <small className="d-flex shadow-sm justify-content-center alert alert-info mb-2" key={key} >{val}</small>)}
                 <select onChange={handleCheck} className="form-select rounded-5 p-3">
+                    <option value="english">Change Language</option>
                     <option value="english">English</option>
                     <option value="swahili">Swahili</option>
                     <option value="kikuyu">Kikuyu</option>
