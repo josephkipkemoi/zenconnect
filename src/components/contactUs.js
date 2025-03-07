@@ -35,12 +35,10 @@ const ContactUsComponent = () => {
       setErrs([message])
     }
   }
-
   return (
     <Container>
       <Card className="border-0">
         <Card.Header>
-          <h2>Contact Us</h2>
           <div class="container mt-5">
             <h2 class="text-center mb-4">Contact Us</h2>
             <div class="card p-4">
