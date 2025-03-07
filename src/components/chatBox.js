@@ -193,7 +193,7 @@ const ChatBox = () => {
                     <Form.Control
                         as="textarea"
                         placeholder="What can I help you with today?"
-                        style={{ height: '180px' }}
+                        style={{ height: '120px' }}
                         className="bg-none text-dark shadow-sm p-3 w-100"
                         onChange={handleMessage}
                         value={message.messageItem}
@@ -219,6 +219,7 @@ const LanguageComponent = () => {
         <div className=''>
             <label><small>Switch language:</small></label>
               <select onChange={handleCheck} className="form-select">
+                  <option value="english">Change language</option>
                   <option value="english">English</option>
                   <option value="swahili">Swahili</option>
                   <option value="kikuyu">Kikuyu</option>
