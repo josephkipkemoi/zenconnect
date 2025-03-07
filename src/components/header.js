@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
 import { Button, Container, Nav, Navbar } from "react-bootstrap"
 import { Link } from "react-router-dom"
+
 import "./header.css"
+import Logo from "../images/logo.png"
 
 const HeaderComponent = () => {
     let [isAuth, setIsAuth] = useState(false)
@@ -23,49 +25,47 @@ const HeaderComponent = () => {
 
     return (
         <header>
-            <nav className="d-sm-flex align-items-center justify-content-center m-3 w-100">
-                <Navbar expand="lg" className="bg-body-tertiary">
-                        <Navbar.Brand href="/">
-                                <h1 className="m-2 header">
-                                    ZenConnect
-                                </h1>
+            <nav>
+                <Navbar expand="lg" className="bg-body-tertiary nav-bar-main shadow">
+                        <Navbar.Brand  href="/">
+                            <img src={Logo} alt="ZenConnect_Logo" className="img-fluid justify-content-center"/>
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                        <Nav className="me-auto">
-                            <Link to="/" className="nav-link d-flex align-items-center">
-                                <FontAwesomeIcon className="m-1" icon={faHome} />
-                                Home
-                            </Link>                           
-                            <Link to="/about-us" className="nav-link w-100 d-flex align-items-center">
-                                <FontAwesomeIcon className="m-1" icon={faMap} />
-                                <span>About</span>
-                            </Link>
-                            <Link to="/features" className="d-flex align-items-center nav-link">
-                                <FontAwesomeIcon className="m-1" icon={faSignHanging} />
-                                Features
-                            </Link>
-                            <Link to="/therapists" className="nav-link d-flex align-items-center">
-                                <FontAwesomeIcon className="m-1" icon={faKitMedical} />
-                                Therapists
-                             </Link>                         
-                            <Link to="/resources" className="d-flex align-items-center nav-link">
-                                <FontAwesomeIcon className="m-1" icon={faBook} />
-                                Resources
-                            </Link>
-                            <Link to="/community" className="d-flex align-items-center nav-link">
-                                <FontAwesomeIcon className="m-1" icon={faPeopleGroup} />
-                                Community
-                            </Link>
-                            <Link to="/contact-us" className="d-flex w-100 align-items-center nav-link">
-                                <FontAwesomeIcon className="m-1" icon={faSquarePhone} />
-                                Contact
-                            </Link>
-                        </Nav>
+                            <Nav className="me-auto">
+                                <Link to="/" className="nav-link nav-link-custom d-flex align-items-center">
+                                    <FontAwesomeIcon className="m-1" icon={faHome} />
+                                    Home
+                                </Link>                           
+                                <Link to="/about-us" className="nav-link nav-link-custom d-flex align-items-center">
+                                    <FontAwesomeIcon className="m-1" icon={faMap} />
+                                    <span>About</span>
+                                </Link>
+                                <Link to="/features" className="d-flex nav-link-custom align-items-center nav-link">
+                                    <FontAwesomeIcon className="m-1" icon={faSignHanging} />
+                                    Features
+                                </Link>
+                                <Link to="/therapists" className="nav-link nav-link-custom d-flex align-items-center">
+                                    <FontAwesomeIcon className="m-1" icon={faKitMedical} />
+                                    Therapists
+                                </Link>                         
+                                <Link to="/resources" className="d-flex nav-link-custom align-items-center nav-link">
+                                    <FontAwesomeIcon className="m-1" icon={faBook} />
+                                    Resources
+                                </Link>
+                                <Link to="/community" className="d-flex nav-link-custom align-items-center nav-link">
+                                    <FontAwesomeIcon className="m-1" icon={faPeopleGroup} />
+                                    Community
+                                </Link>
+                                <Link to="/contact-us" className="d-flex nav-link-custom  align-items-center nav-link">
+                                    <FontAwesomeIcon className="m-1" icon={faSquarePhone} />
+                                    Contact
+                                </Link>
+                            </Nav>
                         </Navbar.Collapse>
                 </Navbar>
             </nav>
-            <Container className="d-flex justify-content-end mb-3">
+            <div className="d-flex justify-content-end m-3">
                 { !isAuth ? 
                     <>    
                         <Link className="text-right nav-link btn m-1" to="/login">Login</Link>
@@ -73,7 +73,7 @@ const HeaderComponent = () => {
                     </> :
                     <Button variant="dark" onClick={handleLogout}>Logout</Button>}
           
-            </Container>
+            </div>
         </header>
     )
 }
