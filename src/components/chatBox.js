@@ -140,7 +140,7 @@ const ChatBox = () => {
             displayTypingMessage(chatHistory)
         }
         fetchOutBoundMessages()
-    }, [counter])
+     }, [counter])
 
     return (
         <div>
