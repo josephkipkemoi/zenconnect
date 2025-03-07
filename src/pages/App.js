@@ -28,9 +28,9 @@ function App() {
         <KycComponent checkTime={checkTime}/>
         <ChatBox/>
         <hr className='mt-5 mb-5'/>
-        <div className='m-4'>
+        {/* <div className='m-4'>
           <LandingSupportComponent/>
-        </div>
+        </div> */}
         <FooterComponent/>
     </div>
   );
