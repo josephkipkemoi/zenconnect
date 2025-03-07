@@ -20,10 +20,10 @@ const KycComponent = ({ checkTime }) => {
     }, [checkTime])
 
     return (
-        <Modal show={active} centered>
-            <Modal.Header className="d-flex justify-content-center bg-info text-dark fw-bold">
-                <h3>
-                    Quick one!
+        <Modal show={active} centered className="border-0 shadow">
+            <Modal.Header className="d-flex justify-content-center bg-info text-dark fw-bold border-0 shadow">
+                <h3 className="text-white fw-bold">
+                    Quick one
                 </h3>
             </Modal.Header>
             <Modal.Body>
