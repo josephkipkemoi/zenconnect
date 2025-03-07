@@ -152,10 +152,10 @@ const ChatBox = () => {
               {!!displayResponse &&
                   <div className="d-flex p-3 align-items-start rounded-5">
                     <div>
-                        <FontAwesomeIcon size="xl" className="bg-warning p-2 m-3 rounded-5 text-light text-right" icon={faBrain}/>
+                        <FontAwesomeIcon size="xl" className="bg-warning p-2 mt-2 m-1 shadow rounded-5 text-light text-right" icon={faBrain}/>
                     </div>
                    
-                    <div className="bg-light p-2 rounded-4 m-1 shadow-sm">
+                    <div className="bg-light p-2 rounded-5 m-1 shadow">
                         <p className="p-3">
                             {displayResponse}
                             {!completedTyping &&
@@ -240,10 +240,10 @@ const OutBoundComponent = ({ message }) => {
         <div className="d-flex justify-content-end w-100">    
             <div>           
               <div className="d-flex w-100 ">
-                    <div className="bg-secondary shadow text-white p-3 rounded-4 m-1">
+                    <div className="bg-secondary shadow text-white p-3 rounded-5 m-1">
                         <span className="d-block">{messageItem}</span>
                     </div>
-                    <FontAwesomeIcon size="xl" className="bg-secondary p-2 m-3 rounded-5 text-light" icon={faUserCircle}/>
+                    <FontAwesomeIcon size="xl" className="bg-secondary p-2 m-1 mt-2 shadow rounded-5 text-light" icon={faUserCircle}/>
                 </div>
             </div>
         </div>

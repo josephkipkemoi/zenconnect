@@ -6,7 +6,11 @@
     opacity: .9;
     padding: 18px;
 }
-
+.chat-box-container p {
+    text-align:start;
+    line-height: 32px;
+    letter-spacing: 1px;
+}
 .chat-user {
     display: block;
     float: right;
