@@ -22,7 +22,7 @@ const TherapistProfileComponent = () => {
 
     return (
         <Container>
-        <Card>
+        <Card className="border-0 shadow rounded-5">
         <Card.Body>
             <Card.Title className="m-3">{gbv_title}</Card.Title>
         </Card.Body>
@@ -31,10 +31,10 @@ const TherapistProfileComponent = () => {
                     const { therapist_name, image_url, description } = data
                     return (
                         <div key={key} className="therapist-profile d-sm-flex">                      
-                                <Card className="m-3 shadow-sm">
+                                <Card className="m-3 border-0 shadow rounded-5">
                                     <Card.Body className="d-flex flex-column justify-content-between">
-                                        <div className="d-flex justify-content-center">
-                                            <img className="rounded-5 text-center" src={image_url} alt="doctor"/>
+                                        <div className="d-flex justify-content-center rounded-5">
+                                            <img className="rounded-5 text-center img-fluid" src={image_url} alt="doctor"/>
                                         </div>
                                         <Card.Title>
                                             {therapist_name}
@@ -43,7 +43,7 @@ const TherapistProfileComponent = () => {
                                         <Card.Text>
                                             {description}
                                         </Card.Text>
-                                        <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center">
+                                        <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center rounded-4 shadow-sm">
                                             <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
                                             <span >Book Appointment</span>
                                         </Button>
@@ -61,7 +61,7 @@ const TherapistProfileComponent = () => {
                     const { therapist_name, image_url, description } = data
                     return (
                         <div key={key} className="therapist-profile d-sm-flex">                      
-                        <Card className="m-3 shadow-sm">
+                        <Card className="m-3 border-0 shadow rounded-5">
                             <Card.Body className="d-flex flex-column justify-content-between">
                                 <div className="d-flex justify-content-center">
                                     <img className="rounded-5 text-center" src={image_url} alt="doctor"/>
@@ -73,7 +73,7 @@ const TherapistProfileComponent = () => {
                                 <Card.Text>
                                     {description}
                                 </Card.Text>
-                                <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center">
+                                <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center rounded-4 shadow-sm">
                                     <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
                                     <span >Book Appointment</span>
                                 </Button>
@@ -91,7 +91,7 @@ const TherapistProfileComponent = () => {
                     const { therapist_name, image_url, description } = data
                     return (
                         <div key={key} className="therapist-profile d-sm-flex">                      
-                                <Card className="m-3 shadow-sm">
+                                <Card className="m-3 border-0 shadow rounded-5">
                                     <Card.Body className="d-flex flex-column justify-content-between">
                                         <div className="d-flex justify-content-center">
                                             <img className="rounded-5 text-center" src={image_url} alt="doctor"/>
@@ -103,7 +103,7 @@ const TherapistProfileComponent = () => {
                                         <Card.Text>
                                             {description}
                                         </Card.Text>
-                                        <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center">
+                                        <Button onClick={handleAppointment} variant="primary" className="d-flex justify-content-center rounded-4 shadow-sm">
                                             <FontAwesomeIcon className="m-1" icon={faCalendarCheck}/>
                                             <span >Book Appointment</span>
                                         </Button>
@@ -150,6 +150,8 @@ const ModalContainer = ({ openModal, setOpenModal }) => {
         setFormData((prev) => ({...prev, [e.target.name]: e.target.value}))
     }
 
+    const handleClose = () => setOpenModal(false)
+
     return (
         <Modal show={openModal}>
             <Modal.Body>
@@ -169,7 +171,7 @@ const ModalContainer = ({ openModal, setOpenModal }) => {
                         <input id="date" onChange={handleChange} name="date_available" className="form-control" type="date" />
                     </div>
                     <div className="d-flex justify-content-center">
-                        <Button variant="dark" className="w-100 m-2 text-center" onClick={handleSubmit}>
+                        <Button variant="dark" className="w-100 m-2 text-center" onClick={handleClose}>
                             Close
                         </Button>  
                         <Button className="w-100 m-2 text-center" onClick={handleSubmit}>
