@@ -5,11 +5,11 @@ import AboutUsComponent from "../components/aboutUs"
 
 const AboutUs = () => {
     return (
-        <Container>
+        <div>
             <HeaderComponent/>
             <AboutUsComponent/>
             <FooterComponent/>
-        </Container>
+        </div>
     )
 }
 
