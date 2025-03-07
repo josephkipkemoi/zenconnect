@@ -2,7 +2,7 @@ import { faRightToBracket, faTimes } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import axios from "axios"
 import { useEffect, useState } from "react"
-import { Button, Card, Container, Modal } from "react-bootstrap"
+import { Button, Card, Container, Form, Modal } from "react-bootstrap"
 import { Link, redirect, useLocation } from "react-router-dom"
 
 const API_URL = process.env.REACT_APP_BACKEND_URL
@@ -51,9 +51,9 @@ const CommunityComponent = () => {
 
     return (
         <Container>
-            <Card className="border-0  community-chat">
-                <Card.Header className="p-3 bg-success text-white">
-                    <h4>Get support from online community</h4>
+            <Card className="border-0 community-chat shadow rounded-5">
+                <Card.Header className="p-4 bg-success text-white m-3 rounded-5 bg-info border-0 shadow">
+                    <h2 className="fw-bold">Get support</h2>
                 </Card.Header>
                 <Card.Body>                  
                     <Card.Text>
@@ -72,8 +72,9 @@ const CommunityComponent = () => {
                                             </select>
                                         </div>
                                         <div className="w-100 m-1">
-                                            <label className="mb-2">Swtich language:</label>
-                                            <select name="category" onChange={handleLang} className="p-3 d-block form-select bg-light border-0 w-100 rounded">
+                                            <label className="mb-2">Switch language:</label>
+                                            <Form.Select name="category" onChange={handleLang} className="p-3 d-block form-select bg-light border-0 w-100 rounded">
+                                                <option value="english">Change language from this menu</option>
                                                 <option value="english">English</option>
                                                 <option value="swahili">Swahili</option>
                                                 <option value="kikuyu">Kikuyu</option>
@@ -82,7 +83,7 @@ const CommunityComponent = () => {
                                                 <option value="luo">Luo</option>
                                                 <option value="maasai">Maasai</option>
                                                 <option value="somali">Somali</option>
-                                            </select>
+                                            </Form.Select>
                                         </div>
                                     </div>
                                    
