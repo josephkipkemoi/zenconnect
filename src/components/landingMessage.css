@@ -1,0 +1,10 @@
+.landing-message-card {
+    background-color: rgb(115, 61, 165);
+    color: whitesmoke;
+}
+.landing-message-card:hover {
+    cursor: pointer;
+    background: #e8ece7;
+    transition: ease-in-out .375s;
+    color: black;
+}
