@@ -3,8 +3,7 @@ import './App.css';
 import FooterComponent from '../components/footer';
 import HeaderComponent from '../components/header';
 import KycComponent from '../components/KycComponent';
-import {LandingMessageComponent, LandingSupportComponent} from '../components/landingMessage';
-import ChatBoxComponent from '../components/chatBoxComponent';
+import LandingSupportComponent  from '../components/landingMessage';
 import ChatBox from '../components/chatBox';
 
 function App() {
@@ -23,16 +22,13 @@ function App() {
   }, [checkTime])
 
   return (
-    <div>
+    <>
         <HeaderComponent/>
         <KycComponent checkTime={checkTime}/>
         <ChatBox/>
-        <hr className='mt-5 mb-5'/>
-        {/* <div className='m-4'>
-          <LandingSupportComponent/>
-        </div> */}
+        <LandingSupportComponent/>
         <FooterComponent/>
-    </div>
+    </>
   );
 }
 
